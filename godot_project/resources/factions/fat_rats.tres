@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="FactionData" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/FactionData.gd" id="1"]
+[ext_resource type="Resource" path="res://resources/parts/limb_lead_pipe.tres" id="2"]
+[ext_resource type="Resource" path="res://resources/parts/limb_rusty_saw.tres" id="3"]
+[ext_resource type="Resource" path="res://resources/parts/limb_sludge_sponge.tres" id="4"]
+[ext_resource type="Resource" path="res://resources/parts/limb_rat_fang.tres" id="5"]
+[ext_resource type="Resource" path="res://resources/parts/chassis_sewer_king.tres" id="6"]
+
+[resource]
+script = ExtResource("1")
+faction_id = "fat_rats"
+display_name = "Fat Rats"
+rep_per_win = 10
+rep_per_loss = 3
+boss_unlock_threshold = 50
+shop_limbs = [ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5")]
+boss_chassis = ExtResource("6")

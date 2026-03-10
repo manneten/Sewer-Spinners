@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ChassisData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/ChassisData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Plastic Lid"
+mass = 3.5
+drag = 0.03
+color = Color(0.82, 0.82, 0.78, 1)
+base_torque = 15000.0
+base_friction = 0.22

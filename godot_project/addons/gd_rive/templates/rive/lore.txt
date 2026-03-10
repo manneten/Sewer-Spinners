@@ -1,0 +1,1245 @@
+// Main lore topic assumed for all triggers
+
+> topic lore
+
++ lore
+- Ask me anything about the world! From dragons to dwarves, or that one goblin who won't stop singing.
+
++ tell me about the world
+- Welcome to Blunderheim! A world where heroes get lost, villains are confused, and cheese sometimes gains consciousness.
+
++ what is blunderheim
+- Blunderheim is a chaotic land where quests are frequent, logic is optional, and your inventory is always full of useless junk.
+
++ who created the world
+- Legend says it was created by a bored wizard who sneezed while casting a "Create Universe" spell.
+
++ describe humans
+- Humans: adaptable, dramatic, and often forgetting where they left their swords.
+
++ who are elves
+- Elves: eternally graceful, perfection-obsessed, and unable to resist correcting your pronunciation.
+
++ what do dwarves look like
+- Dwarves: stout miners with epic beards and an unhealthy obsession with ale and underground tunnels.
+
++ tell me about halflings
+- Halflings: tiny adventurers who excel at sneaking and eating more food than seems possible.
+
++ what is a goblin
+- Goblins: pint-sized pests fond of setting traps, stealing shiny things, and causing mild mayhem.
+
++ who are orcs
+- Orcs: big, green, loud, and surprisingly poetic when no one's listening.
+
++ describe dragons
+- Dragons: huge, fire-breathing reptiles with hoarding addictions and a flair for dramatic entrances.
+
++ what is a gelatinous cube
+- Gelatinous cubes: dungeon custodians who silently dissolve your gear and dreams.
+
++ who are kobolds
+- Kobolds: small, scaly tricksters with more traps than sense.
+
++ describe trolls
+- Trolls: giant regeneration machines who hate sunlight and puzzles.
+
++ what is a beholder
+- Beholders: floating eyeballs with more attitude than manners.
+
++ what is magic
+- Magic: the art of waving your hands and pretending you know what you’re doing.
+
++ explain fireball
+- Fireball: a fiery explosion that turns friends and foes alike into crispy critters.
+
++ what is polymorph
+- Polymorph: turning enemies into harmless animals, sometimes accidentally including yourself.
+
++ what is necromancy
+- Necromancy: politely asking the dead to lend a hand, or claw, or whatever.
+
++ describe teleportation
+- Teleportation: the art of disappearing in one spot and appearing stuck halfway through a wall in another.
+
++ what is the city of punsberg
+- Punsberg: a city where every street sign groans as much as its residents.
+
++ tell me about the great library of lost scrolls
+- An archive so vast and confusing, many leave with more questions—and papercuts.
+
++ describe the dark forest of woeful whispers
+- A spooky forest filled with trees that judge your life choices and squirrels who know your secrets.
+
++ what is the sword of questionable sharpness
+- A legendary blade that struggles to cut through butter, but tells great jokes.
+
++ what are the boots of endless tripping
+- Magical boots guaranteed to make you the star of every pratfall.
+
++ tell me about the ring of infinite coffee
+- Keeps you awake for eternity, but beware the jitters and existential dread.
+
++ what started the great pancake war
+- A syrup shortage escalated into a batter-fueled conflict of epic stickiness.
+
++ tell me about emperor blunder iv
+- The ruler who accidentally declared war on his own kingdom while sneezing.
+
++ who is the god of mischief
+- Jesterius: patron of pranks, lost socks, and awkward social moments.
+
++ describe the goddess of naps
+- Dormira: she grants blessings of sleepiness at inconvenient times.
+
++ what is the quest for the holy grail of snacks
+- A noble pursuit of the ultimate snack rumored to cause happiness and mild indigestion.
+
++ tell me about the endless fetch quest
+- A task so tedious, heroes contemplate quitting... but the loot is tempting.
+
++ explain tavern brawls
+- A chaotic mix of flying mugs, bad insults, and questionable dance moves.
+
++ what are the rules of polite dragon riding
+- Always bring mint gum, avoid the tail, and remember dragons hate small talk.
+
++ who are the ancient treefolk
+- Sentient trees with all the wisdom of centuries and zero tolerance for campfires.
+
++ what is a mimic
+- A creature that pretends to be a chest until you hug it... painfully.
+
++ describe a lich
+- An undead wizard obsessed with paperwork and eternal life insurance.
+
++ what is a phoenix
+- A fiery bird that dies gloriously and rises flamboyantly from its ashes.
+
++ tell me about the haunted manor of sighs
+- A spooky mansion where every ghost is slightly disappointed.
+
++ what is the cursed amulet of bad luck
+- Wearing this brings you everything you didn’t want, exactly when you least need it.
+
++ who is the legendary hero bob
+- Bob: once a farmer, now a hero thanks mostly to dumb luck and his stubbornness.
+
++ describe the goblin king
+- A surprisingly competent ruler with a penchant for shiny hats.
+
++ what is the potion of invisibility
+- Makes you invisible until you sneeze or bump into something.
+
++ what is the tavern of the drunken dragon
+- A tavern so rowdy even the dragon bartender needs a break.
+
++ who are the shadow assassins
+- Experts at disappearing... except when caught on camera.
+
++ what is the guild of misplaced adventurers
+- A group dedicated to getting lost and finding trouble.
+
++ what is the history of the great cheese rebellion
+- A revolt started by sentient cheese wheels tired of being eaten.
+
++ tell me about the island of lost socks
+- A mysterious place where every missing sock ends up with questionable company.
+
++ what is the enchanted forest of awkward silence
+- A place where conversations go dead and crickets judge you mercilessly.
+
++ describe the legendary sword "Pointy"
+- Not the sharpest blade, but has a heart of gold and a terrible sense of direction.
+
++ what is the festival of exploding pumpkins
+- An annual event involving fireworks, pumpkins, and minor burns.
+
++ who is the mad alchemist zingle
+- A genius inventor who mostly invents things that explode.
+
++ what is the spell of eternal hiccups
+- A curse that causes hiccups at the worst possible moments.
+
++ describe the city of glitterhoof
+- A bustling town where everything sparkles, often blinding unsuspecting visitors.
+
++ what are the enchanted dice of doom
+- Dice that always roll a critical fail on your turn.
+
++ tell me about the mysterious fog of confusion
+- A fog that makes everyone forget what they were doing.
+
++ what is the legend of the lost pet rock
+- A tale of a rock so well-hidden, even its owner forgot where.
+
++ describe the royal jester's secret
+- He’s actually a spy... but mostly spies on himself.
+
++ what is the book of slightly useful spells
+- A dusty tome filled with magic that's just a little bit helpful... sometimes.
+
++ who are the fire ants of fury
+- Tiny insects with the anger of a thousand suns.
+
++ what is the elixir of awkward dancing
+- Makes you dance like no one's watching, even when they are.
+
++ tell me about the talking sword
+- A sword with opinions, mostly about your fighting skills.
+
++ what is the map to the lost city of nowhere
+- A map that leads you in circles but offers great views.
+
++ describe the giant snail race
+- A thrilling event... if you have all day.
+
++ what is the secret ingredient in goblin stew
+- Mostly regret and a pinch of surprise.
+
++ who is the forgotten king of napping
+- A monarch who ruled mostly from his bed.
+
++ what is the curse of the itchy helmet
+- A helmet that will never quite stop itching during battle.
+
++ tell me about the wizard's beard competition
+- A contest for the most epic beard, judged by beard-hating trolls.
+
++ what is the enchanted lute of bad songs
+- A lute that guarantees everyone leaves the room quickly.
+
++ describe the underground market of oddities
+- A place where you can buy anything from cursed socks to dragon tears.
+
++ what is the history of the sky pirates
+- Rogues who prefer flying ships and terrible rhymes.
+
++ tell me about the stone giant's favorite pastime
+- Collecting tiny pebbles and judging their shapes.
+
++ what is the potion of temporary singing talent
+- Grants you a perfect voice for one hour, followed by eternal silence.
+
++ describe the kingdom of backwards
+- A land where everyone walks backward and speaks in reverse.
+
++ what is the festival of endless pies
+- A feast where no one leaves hungry, but everyone leaves sticky.
+
++ who is the legendary thief "Quick Fingers"
+- Known for stealing your heart... and your coin purse.
+
++ what is the magic mirror's gossip
+- It tells secrets but mostly just complains about your outfit.
+
++ describe the cave of confused bats
+- A cavern where bats fly in circles, lost and a little dizzy.
+
++ what is the enchanted sandwich
+- A sandwich that never runs out, but also never tastes quite right.
+
++ tell me about the ancient rune of forgetfulness
+- A rune that causes you to forget why you walked into the room.
+
++ who are the knights of the round table... literally
+- Heroes who prefer sitting to fighting.
+
++ what is the secret passage in the castle basement
+- A tunnel that leads nowhere but is surprisingly drafty.
+
++ describe the ghost who loves bad jokes
+- A specter who haunts with puns and terrible humor.
+
++ what is the dragon's favorite snack
+- Charred marshmallows and unfortunate adventurers.
+
++ tell me about the enchanted garden of talking flowers
+- Flowers that gossip nonstop and judge your fashion sense.
+
++ what is the potion of uncontrollable laughter
+- Drink this and prepare for giggles in the most inappropriate moments.
+
++ who is the master of disguise
+- A rogue who changes outfits more than plans.
+
++ describe the cursed painting
+- A portrait that follows you with its eyes... and occasionally winks.
+
++ what is the legend of the hero who forgot his sword
+- A tale of bravery, quick thinking, and a very confused hero.
+
++ tell me about the great dragon migration
+- Dragons moving south for the winter... or just to avoid taxes.
+
++ what is the mystical stone of bad decisions
+- Holding this stone guarantees at least one poor choice a day.
+
++ describe the enchanted cloak of invisibility (sort of)
+- Makes you mostly invisible unless you move too fast or sneeze.
+
++ who are the forest sprites
+- Tiny pranksters who rearrange your gear while you sleep.
+
++ what is the goblin market
+- A bazaar where everything is slightly suspicious and heavily discounted.
+
++ tell me about the legendary blacksmith forge
+- A place where weapons are made, and sparks sometimes fly... literally.
+
++ what is the spell of delayed teleportation
+- Teleports you... five minutes after you wanted it.
+
++ describe the cave troll
+- Large, grumpy, and surprisingly fond of poetry.
+
++ what is the enchanted harp of sleep
+- Plays melodies that put even dragons to sleep.
+
++ tell me about the cursed coin
+- Flips heads no matter what, but always loses you money.
+
++ who is the wizard who talks to animals
+- A friendly but confused fellow who mostly gets ignored by squirrels.
+
++ what is the festival of the dancing skeletons
+- An eerie celebration with bone-shaking tunes and rattling parties.
+
++ describe the haunted battlefield
+- A place where ghosts argue about who lost and why.
+
++ what is the secret of the lost city
+- That it was lost because no one bothered to make a map.
+
++ tell me about the enchanted potion of mild confusion
+- Causes you to question everything for exactly five minutes.
+
++ who are the sky elves
+- Elves who live in floating cities and have serious issues with vertigo.
+
++ what is the spell of loud sneezing
+- Makes everyone around you sneeze uncontrollably. Great for distractions.
+
++ describe the legendary shield "The Slightly Bent"
+- Offers mediocre protection but excellent conversation starter.
+
++ what is the kingdom of eternal paperwork
+- Where bureaucracy never ends and dragons are just another form.
+
++ tell me about the mysterious hooded figure
+- Seen everywhere and nowhere, probably just someone avoiding responsibilities.
+
++ what is the enchanted quill
+- Writes your thoughts... and occasionally your grocery list.
+
++ who is the thief who can't steal
+- A bungling rogue whose stealth is... questionable.
+
++ what is the potion of temporary bravery
+- Makes you heroic for exactly ten seconds.
+
++ describe the haunted library
+- Where books rearrange themselves and whisper spoilers.
+
++ what is the festival of the glowing mushrooms
+- A night-time party where everyone glows and forgets their inhibitions.
+
++ tell me about the dragon who loves poetry
+- A fearsome beast with a soft spot for sonnets and limericks.
+
++ who are the mysterious shadow monks
+- Silent warriors who move like smoke and occasionally nap.
+
++ what is the cursed necklace of bad decisions
+- Causes you to buy things you don’t need... repeatedly.
+
++ describe the enchanted boots of speed
+- Makes you run fast but forget where you’re going.
+
++ what is the wizard's tower made of
+- Mostly bricks, enchanted dust, and questionable plumbing.
+
++ tell me about the secret society of snack hoarders
+- A group dedicated to hiding treats from each other.
+
++ what is the magical compass of getting lost
+- Always points you in the opposite direction of your goal.
+
++ who is the legendary hero "One More Step"
+- Famous for always moving just one step further into danger.
+
++ what is the potion of awkward charm
+- Makes you endearing in the most uncomfortable ways.
+
++ describe the enchanted gloves
+- Grants dexterity unless you're wearing mittens.
+
++ what is the festival of falling leaves
+- Celebrates the season by throwing leaves at each other.
+
++ tell me about the ancient dragon bones
+- Said to grant power, or at least a decent conversation topic.
+
++ who is the queen of spiders
+- A regal arachnid with a fondness for tea and intrigue.
+
++ what is the magical bag of holding... sometimes
+- Sometimes holds things, sometimes eats your keys.
+
++ describe the enchanted necklace of sneezing
+- Causes uncontrollable sneezing fits at the worst times.
+
++ what is the kingdom of upside-down castles
+- Where gravity is optional and logic is discouraged.
+
++ tell me about the cursed scroll of forgetfulness
+- Read this and instantly forget what you just read.
+
++ who are the stone golems
+- Living statues who take everything literally.
+
++ what is the spell of sudden dance
+- Forces everyone nearby to break into dance spontaneously.
+
++ describe the enchanted ring of bad puns
+- Grants the wearer an endless supply of groan-worthy jokes.
+
++ what is the tavern's secret basement
+- Full of mysterious barrels, odd smells, and questionable decisions.
+
++ tell me about the mystical fog of lost thoughts
+- A fog that makes you forget what you were about to say.
+
++ who is the forgotten bard
+- A musician whose songs no one remembers but everyone hums.
+
++ what is the enchanted shield of awkwardness
+- Protects you from harm but guarantees social discomfort.
+
++ describe the goblin's favorite pastime
+- Rearranging camp supplies and confusing adventurers.
+
++ what is the legend of the endless staircase
+- A staircase that never ends and causes mild vertigo.
+
++ tell me about the enchanted feather of tickling
+- A feather that causes uncontrollable laughter when waved.
+
++ who are the silent rangers
+- Hunters who prefer to stalk silently and leave sarcastic notes.
+
++ what is the magical lamp of minor inconveniences
+- Grants wishes that mostly cause small annoyances.
+
++ describe the cursed boots of dancing
+- Makes you dance uncontrollably whenever music plays.
+
++ what is the festival of the glowing pumpkins
+- A night of lanterns, laughter, and occasional pumpkin explosions.
+
++ tell me about the enchanted sword of sarcasm
+- A blade that insults its wielder and enemies alike.
+
++ who is the master of awkward situations
+- A hero who specializes in turning anything into an uncomfortable moment.
+
++ what is the potion of instant regret
+- Drink this and instantly question all your life choices.
+
++ describe the enchanted cloak of invisibility (mostly)
+- Hides you unless someone is really looking.
+
++ what is the secret of the enchanted forest
+- It changes paths just to mess with travelers.
+
++ tell me about the goblin chef
+- A cook whose recipes cause more explosions than meals.
+
++ who are the mysterious wandering monks
+- They appear, offer cryptic advice, then disappear before you can ask questions.
+
++ what is the enchanted crystal ball
+- Shows blurry images and occasionally your embarrassing moments.
+
++ describe the cursed helmet of bad hair
+- Guarantees the worst hair day in battle.
+
++ what is the legend of the silver spoon
+- A utensil said to grant good luck... to those who don’t need it.
+
++ tell me about the dragon's hoard of oddities
+- Full of socks, half-eaten sandwiches, and some gold.
+
++ who is the shadow thief
+- A mysterious figure who steals shadows and occasionally your lunch.
+
++ what is the enchanted map of nowhere
+- Leads adventurers in circles but offers great sightseeing.
+
++ describe the potion of forgetful courage
+- Gives bravery but makes you forget what you're brave for.
+
++ what is the festival of the noisy night
+- A celebration where everyone sings badly and laughs loudly.
+
++ tell me about the ancient runes of nonsense
+- Symbols that make no sense but are surprisingly powerful.
+
++ who are the silver wolves
+- Fierce warriors with fur that shines like the moon.
+
++ what is the cursed mirror of self-doubt
+- Shows you as a kitten... with a terrible haircut.
+
++ describe the enchanted harp of terrible music
+- Plays tunes so bad they put dragons to sleep.
+
++ what is the secret passage of the sneaky squirrel
+- A tunnel only accessible to the craftiest rodents.
+
++ tell me about the enchanted boots of slippery walking
+- Makes you glide... usually into something.
+
++ who is the wizard of bad timing
+- Always casts spells moments too late or too early.
+
++ what is the potion of endless yawns
+- Makes you contagious with tiredness.
+
++ describe the enchanted necklace of giggles
+- Causes uncontrollable laughter at serious moments.
+
++ what is the festival of the upside-down day
+- Everyone does everything backwards for a day.
+
++ tell me about the cursed coin of endless flipping
+- Never lands on what you want, but entertains for hours.
+
++ who are the ironclad defenders
+- Warriors with armor so loud they announce their arrival.
+
++ what is the enchanted quiver
+- Holds arrows... sometimes.
+
++ describe the secret society of bookworms
+- Scholars who read everything but never take notes.
+
++ what is the legend of the eternal campfire
+- A fire that never goes out but always smells like burnt marshmallows.
+
++ tell me about the enchanted ring of forgetfulness
+- Makes you forget why you entered a room.
+
++ who is the master of lost keys
+- A rogue with a terrible memory and great excuses.
+
++ what is the potion of awkward silence
+- Causes sudden silence and side glances.
+
++ describe the haunted helmet
+- Whispers bad advice during battles.
+
++ what is the festival of falling stars
+- A night of wishes, fireworks, and tripping over roots.
+
++ tell me about the goblin king's pet
+- A slightly grumpy ferret with a crown.
+
++ who are the wandering minstrels
+- Musicians who never seem to have the right song.
+
++ what is the enchanted scroll of bad handwriting
+- Contains powerful spells nobody can read.
+
++ describe the cursed gloves of slippery grip
+- Makes everything you touch slide away.
+
++ what is the legend of the lost treasure of misfortune
+- Said to bring riches and endless headaches.
+
++ tell me about the enchanted harp of peace
+- Calms even the most aggressive tavern brawlers.
+
++ who is the legendary hero who talks too much
+- A bard famous for long stories and even longer breaks.
+
++ what is the secret to the enchanted lake
+- The water makes you sing... badly.
+
++ describe the festival of the moonlight dance
+- A night of magic, music, and questionable dance moves.
+
++ what is the cursed necklace of bad luck
+- Every decision you make is just slightly worse.
+
++ tell me about the mysterious hooded stranger
+- Offers advice that’s usually unhelpful but amusing.
+
++ who are the shadow dancers
+- Silent performers who blend into the night.
+
++ what is the enchanted staff of confusion
+- Causes more questions than answers.
+
++ describe the ancient library of whispers
+- Books talk, but mostly gossip.
+
++ what is the potion of endless sneezing
+- Guaranteed to clear a room.
+
++ tell me about the magical garden of illusions
+- Nothing is quite what it seems.
+
++ who is the wizard of forgotten spells
+- Knows every spell... except the ones he needs.
+
++ what is the legend of the endless maze
+- A labyrinth with no exit and terrible signage.
+
++ describe the enchanted mirror of laughter
+- Shows you your funniest moments.
+
++ what is the cursed sword of bad timing
+- Always strikes a moment too late.
+
++ tell me about the festival of the rolling barrels
+- A chaotic race down the hill with barrels and bruises.
+
++ who are the night watchers
+- Guardians of the dark with keen eyes and bad jokes.
+
++ what is the enchanted necklace of quiet
+- Silences your footsteps... unless you run.
+
++ describe the magical flute of silence
+- Makes everything around you mute... including yourself.
+
++ what is the potion of instant dance
+- Forces a dance break wherever you are.
+
++ tell me about the cursed boots of tripping
+- Guarantees falls at the worst moments.
+
++ who is the master of misplaced spells
+- A wizard famous for miscasting and apologizing.
+
++ what is the enchanted cape of invisibility (kind of)
+- Mostly invisible unless you turn sharply.
+
++ describe the ancient stone circle
+- A place of power... and bad cell reception.
+
++ what is the legend of the brave squirrel
+- A tiny hero with a big attitude.
+
++ tell me about the enchanted ring of endless jokes
+- Never runs out of punchlines.
+
++ who are the silent shadows
+- Mysterious figures who prefer to stay quiet.
+
++ what is the cursed coin of double heads
+- Always lands on heads... twice.
+
++ describe the magical garden of singing flowers
+- Flowers that perform daily concerts.
+
++ what is the festival of the glowing lanterns
+- A night of light, laughter, and lost shoes.
+
++ tell me about the wizard's lost hat
+- A hat that wanders on its own and causes mischief.
+
++ who is the legendary thief with a heart of gold
+- Steals your gold, then donates it anonymously.
+
++ what is the enchanted quill of bad poetry
+- Writes poems that make dragons groan.
+
++ describe the haunted inn of the wandering ghost
+- A place where the ghost keeps moving rooms.
+
++ what is the potion of uncontrollable hiccups
+- Causes hiccups that shake the whole tavern.
+
++ tell me about the enchanted harp of tears
+- Plays melodies that make even stone statues cry.
+
++ who are the forest guardians
+- Protectors of the woods with sharp arrows and sharper wit.
+
++ what is the cursed necklace of forgetfulness
+- Makes you forget names, dates, and sometimes why you’re adventuring.
+
++ describe the enchanted boots of silent steps
+- Perfect for sneaking... until you sneeze.
+
++ what is the festival of the masked revelers
+- A night of mystery, music, and mistaken identities.
+
++ tell me about the enchanted mirror of truth
+- Shows what you really look like... and it's hilarious.
+
++ who is the wizard of many hats
+- Changes hats more often than spells.
+
++ what is the legend of the lost kitten
+- A tale of bravery, fluff, and many naps.
+
++ describe the enchanted sword of light
+- Shines bright and sometimes blinds the wielder.
+
++ what is the cursed ring of endless chores
+- Makes you do chores forever... and ever.
+
++ tell me about the mysterious floating islands
+- Islands that float for reasons unknown... mostly magic.
+
++ who are the brave adventurers of blunderheim
+- Heroes who often get lost but never give up.
+
++ what is the enchanted cloak of feathers
+- Makes you light as a bird, but itchy.
+
++ describe the festival of the wild boar chase
+- A chaotic run after a very confused boar.
+
++ what is the potion of temporary invisibility
+- Hide for a short time, but beware the glitter trail.
+
++ tell me about the enchanted horn of call
+- Summons help... or just loud noises.
+
++ who is the legendary baker of blunderheim
+- Known for pies that cause mild explosions.
+
++ what is the cursed dagger of betrayal
+- Stabs the wielder’s ego more than foes.
+
++ describe the enchanted staff of storms
+- Controls weather... sometimes just a breeze.
+
++ what is the festival of the giant's dance
+- Giants attempt ballet... with questionable results.
+
++ tell me about the enchanted boots of flying
+- Lets you fly, but only three feet off the ground.
+
++ who are the mysterious shadow cats
+- Silent felines with glowing eyes and attitude.
+
++ what is the potion of endless energy
+- Makes you hyperactive and slightly annoying.
+
++ describe the haunted forest of echoes
+- Where your own voice mocks you.
+
++ what is the secret to the enchanted well
+- Grants wishes... with unexpected twists.
+
++ tell me about the legendary hero's pet rock
+- Loyal, silent, and very heavy.
+
++ who is the wizard who can't stop laughing
+- A spellcaster whose giggles cause magic mishaps.
+
++ what is the enchanted necklace of warmth
+- Keeps you cozy... until you lose it.
+
++ describe the festival of the falling stars
+- A night of wishes, stories, and lost hats.
+
++ what is the cursed ring of forgetfulness
+- Causes memory lapses at inconvenient times.
+
++ tell me about the enchanted harp of joy
+- Plays tunes that lift even the darkest moods.
+
++ who are the keepers of the ancient scrolls
+- Guardians who sometimes forget where they put the scrolls.
+
++ what is the legend of the sleeping giant
+- A massive being who snores louder than thunderstorms.
+
++ describe the enchanted sword of truth
+- Reveals lies... and makes conversations awkward.
+
++ what is the festival of the roaring flames
+- Fire dancing, storytelling, and occasional singed eyebrows.
+
++ tell me about the mysterious fog of forgetfulness
+- Makes you forget where you put your keys... and much more.
+
++ who is the master of enchanted illusions
+- A trickster who dazzles and confuses everyone.
+
++ what is the enchanted cloak of shadows
+- Blends you into the darkness... unless you move too fast.
+
++ describe the haunted castle of whispers
+- Filled with voices that argue about nothing important.
+
++ what is the potion of silent footsteps
+- Walk quietly unless you trip over something.
+
++ tell me about the enchanted ring of laughter
+- Makes you laugh at the worst jokes.
+
++ who are the brave knights of blunderheim
+- Fighters with big hearts and questionable tactics.
+
++ what is the festival of the sparkling snow
+- A winter celebration with magic and hot cocoa.
+
++ describe the enchanted boots of jumping
+- Makes you leap great distances... usually into trouble.
+
++ what is the cursed necklace of awkward hugs
+- Causes hugs to be... memorable.
+
++ tell me about the mysterious floating lanterns
+- Lights that drift on the breeze, leading adventurers astray.
+
++ who is the legendary bard of blunderheim
+- A musician whose songs inspire and confuse.
+
++ what is the enchanted sword of flame
+- Burns enemies and occasionally your own fingers.
+
++ describe the festival of the great feast
+- A day of eating, storytelling, and regretting choices.
+
++ what is the potion of invisible hiccups
+- Hiccups you can’t see but everyone hears.
+
++ tell me about the cursed staff of bad luck
+- Causes spells to backfire spectacularly.
+
++ who are the shadowy figures in the forest
+- Mysterious watchers who may be friendly... or not.
+
++ what is the enchanted cloak of feathers
+- Soft, warm, and occasionally ticklish.
+
++ describe the haunted well of wishes
+- Grants wishes with a twist... and a splash.
+
++ what is the festival of the glowing mushrooms
+- A magical night of light and laughter.
+
++ tell me about the ancient runes of power
+- Symbols of great magic and terrible handwriting.
+
++ who is the wizard who talks to trees
+- A friendly soul who mostly listens to complaints.
+
++ what is the enchanted quill of endless stories
+- Writes tales that never end... much to readers' dismay.
+
++ describe the cursed coin of bad luck
+- Ensures you lose every bet... and occasionally your hat.
+
++ what is the festival of the dancing fireflies
+- A magical night of lights, music, and bugs.
+
++ tell me about the enchanted harp of silence
+- Plays music that no one can hear.
+
++ who are the guardians of the ancient forest
+- Protectors of nature with sharp eyes and sharper arrows.
+
++ what is the secret of the lost treasure
+- It’s lost for a reason... probably bad maps.
+
++ describe the haunted mansion of sighs
+- Filled with ghosts who are just a little disappointed.
+
++ what is the potion of endless curiosity
+- Makes you ask questions... nonstop.
+
++ tell me about the enchanted ring of courage
+- Gives bravery... and occasional overconfidence.
+
++ who is the legendary hero of blunderheim
+- A figure of legend, mystery, and occasional bad decisions.
+
++ what is the enchanted sword of light
+- Shines brightly and sometimes blinds allies.
+
++ describe the festival of the rolling pumpkins
+- A chaotic event full of laughs and bruises.
+
++ what is the cursed necklace of forgetfulness
+- Causes you to forget names, places, and sometimes quests.
+
++ tell me about the mysterious hooded traveler
+- Offers advice that's cryptic and confusing.
+
++ who are the silent watchers
+- Guardians who observe quietly from the shadows.
+
++ what is the enchanted staff of illusions
+- Creates images that fool even the wise.
+
++ describe the haunted library of whispers
+- Books that talk and sometimes gossip.
+
++ what is the potion of endless sneezes
+- Causes sneezing fits that clear the room.
+
++ tell me about the magical garden of dreams
+- A place where your wildest dreams come true... or nightmares.
+
++ who is the wizard of forgotten knowledge
+- Knows many secrets but forgets the important ones.
+
++ what is the legend of the endless maze
+- A labyrinth with no exit and terrible signs.
+
++ describe the enchanted mirror of laughter
+- Shows your funniest moments.
+
++ what is the cursed sword of bad timing
+- Always strikes a moment too late.
+
++ tell me about the festival of the rolling barrels
+- A race down the hill with barrels and bruises.
+
++ who are the night watchers
+- Guardians with keen eyes and bad jokes.
+
++ what is the enchanted necklace of silence
+- Silences footsteps unless you run.
+
++ describe the magical flute of silence
+- Mutes everything, including yourself.
+
++ what is the potion of instant dance
+- Forces dance breaks wherever you are.
+
++ tell me about the cursed boots of tripping
+- Guarantees falls at worst moments.
+
++ who is the master of misplaced spells
+- A wizard famous for miscasting and apologizing.
+
++ what is the enchanted cape of invisibility
+- Mostly invisible unless you turn sharply.
+
++ describe the ancient stone circle
+- A place of power and bad cell reception.
+
++ what is the legend of the brave squirrel
+- A tiny hero with a big attitude.
+
++ tell me about the enchanted ring of endless jokes
+- Never runs out of punchlines.
+
++ who are the silent shadows
+- Mysterious figures who prefer to stay quiet.
+
++ what is the cursed coin of double heads
+- Always lands on heads... twice.
+
++ describe the magical garden of singing flowers
+- Flowers that perform daily concerts.
+
++ what is the festival of the glowing lanterns
+- A night of light, laughter, and lost shoes.
+
++ tell me about the wizard's lost hat
+- A hat that wanders on its own and causes mischief.
+
++ who is the legendary thief with a heart of gold
+- Steals your gold, then donates it anonymously.
+
++ what is the enchanted quill of bad poetry
+- Writes poems that make dragons groan.
+
++ describe the haunted inn of the wandering ghost
+- A place where the ghost keeps moving rooms.
+
++ what is the potion of uncontrollable hiccups
+- Causes hiccups that shake the whole tavern.
+
++ tell me about the enchanted harp of tears
+- Plays melodies that make even stone statues cry.
+
++ who are the forest guardians
+- Protectors of the woods with sharp arrows and sharper wit.
+
++ what is the cursed necklace of forgetfulness
+- Makes you forget names, dates, and sometimes why you’re adventuring.
+
++ describe the enchanted boots of silent steps
+- Perfect for sneaking... until you sneeze.
+
++ what is the festival of the masked revelers
+- A night of mystery, music, and mistaken identities.
+
++ tell me about the enchanted mirror of truth
+- Shows what you really look like... and it's hilarious.
+
++ who is the wizard of many hats
+- Changes hats more often than spells.
+
++ what is the legend of the lost kitten
+- A tale of bravery, fluff, and many naps.
+
++ describe the enchanted sword of light
+- Shines bright and sometimes blinds the wielder.
+
++ what is the cursed ring of endless chores
+- Makes you do chores forever... and ever.
+
++ tell me about the mysterious floating islands
+- Islands that float for reasons unknown... mostly magic.
+
++ who are the brave adventurers of blunderheim
+- Heroes who often get lost but never give up.
+
++ what is the enchanted cloak of feathers
+- Makes you light as a bird, but itchy.
+
++ describe the festival of the wild boar chase
+- A chaotic run after a very confused boar.
+
++ what is the potion of temporary invisibility
+- Hide for a short time, but beware the glitter trail.
+
++ tell me about the enchanted horn of call
+- Summons help... or just loud noises.
+
++ who is the legendary baker of blunderheim
+- Known for pies that cause mild explosions.
+
++ what is the cursed dagger of betrayal
+- Stabs the wielder’s ego more than foes.
+
++ describe the enchanted staff of storms
+- Controls weather... sometimes just a breeze.
+
++ what is the festival of the giant's dance
+- Giants attempt ballet... with questionable results.
+
++ tell me about the enchanted boots of flying
+- Lets you fly, but only three feet off the ground.
+
++ who are the mysterious shadow cats
+- Silent felines with glowing eyes and attitude.
+
++ what is the potion of endless energy
+- Makes you hyperactive and slightly annoying.
+
++ describe the haunted forest of echoes
+- Where your own voice mocks you.
+
++ what is the secret to the enchanted well
+- Grants wishes... with unexpected twists.
+
++ tell me about the legendary hero's pet rock
+- Loyal, silent, and very heavy.
+
++ who is the wizard who can't stop laughing
+- A spellcaster whose giggles cause magic mishaps.
+
++ what is the enchanted necklace of warmth
+- Keeps you cozy... until you lose it.
+
++ describe the festival of the falling stars
+- A night of wishes, stories, and lost hats.
+
++ what is the cursed ring of forgetfulness
+- Causes memory lapses at inconvenient times.
+
++ tell me about the enchanted harp of joy
+- Plays tunes that lift even the darkest moods.
+
++ who are the keepers of the ancient scrolls
+- Guardians who sometimes forget where they put the scrolls.
+
++ what is the legend of the sleeping giant
+- A massive being who snores louder than thunderstorms.
+
++ describe the enchanted sword of truth
+- Reveals lies... and makes conversations awkward.
+
++ what is the festival of the roaring flames
+- Fire dancing, storytelling, and occasional singed eyebrows.
+
++ tell me about the mysterious fog of forgetfulness
+- Makes you forget where you put your keys... and much more.
+
++ who is the master of enchanted illusions
+- A trickster who dazzles and confuses everyone.
+
++ what is the enchanted cloak of shadows
+- Blends you into the darkness... unless you move too fast.
+
++ describe the haunted castle of whispers
+- Filled with voices that argue about nothing important.
+
++ what is the potion of silent footsteps
+- Walk quietly unless you trip over something.
+
++ tell me about the enchanted ring of laughter
+- Makes you laugh at the worst jokes.
+
++ who are the brave knights of blunderheim
+- Fighters with big hearts and questionable tactics.
+
++ what is the festival of the sparkling snow
+- A winter celebration with magic and hot cocoa.
+
++ describe the enchanted boots of jumping
+- Makes you leap great distances... usually into trouble.
+
++ what is the cursed necklace of awkward hugs
+- Causes hugs to be... memorable.
+
++ tell me about the mysterious floating lanterns
+- Lights that drift on the breeze, leading adventurers astray.
+
++ who is the legendary bard of blunderheim
+- A musician whose songs inspire and confuse.
+
++ what is the enchanted sword of flame
+- Burns enemies and occasionally your own fingers.
+
++ describe the festival of the great feast
+- A day of eating, storytelling, and regretting choices.
+
++ what is the potion of invisible hiccups
+- Hiccups you can’t see but everyone hears.
+
++ tell me about the cursed staff of bad luck
+- Causes spells to backfire spectacularly.
+
++ who are the shadowy figures in the forest
+- Mysterious watchers who may be friendly... or not.
+
++ what is the enchanted cloak of feathers
+- Soft, warm, and occasionally ticklish.
+
++ describe the haunted well of wishes
+- Grants wishes with a twist... and a splash.
+
++ what is the festival of the glowing mushrooms
+- A magical night of light and laughter.
+
++ tell me about the ancient runes of power
+- Symbols of great magic and terrible handwriting.
+
++ who is the wizard who talks to trees
+- A friendly soul who mostly listens to complaints.
+
++ what is the enchanted quill of endless stories
+- Writes tales that never end... much to readers' dismay.
+
++ describe the cursed coin of bad luck
+- Ensures you lose every bet... and occasionally your hat.
+
++ what is the festival of the dancing fireflies
+- A magical night of lights, music, and bugs.
+
++ tell me about the enchanted harp of silence
+- Plays music that no one can hear.
+
++ who are the guardians of the ancient forest
+- Protectors of nature with sharp eyes and sharper arrows.
+
++ what is the secret of the lost treasure
+- It’s lost for a reason... probably bad maps.
+
++ describe the haunted mansion of sighs
+- Filled with ghosts who are just a little disappointed.
+
++ what is the potion of endless curiosity
+- Makes you ask questions... nonstop.
+
++ tell me about the enchanted ring of courage
+- Gives bravery... and occasional overconfidence.
+
++ who is the legendary hero of blunderheim
+- A figure of legend, mystery, and occasional bad decisions.
+
+// TTRPG Parody Lore File - ~200 topics
+
+// RiveScript uses + to match user input triggers
+// - to respond with answers
+// Use ~ wildcards for variations
+
+// Basic greetings & lore introduction
++ lore
+- Ah, the grand lore of our ridiculous world! Ask me about anything: races, magic, or that one guy who talks to squirrels.
+
++ tell me about the world
+- Our world, known as Blunderheim, was created by a committee who couldn't agree on a name. Hence the chaos.
+
++ what is blunderheim
+- Blunderheim: land of endless quests, questionable heroes, and a surprising number of sentient cheese wheels.
+
+// Races
+
++ tell me about humans
+- Humans: The baseline of adventurers. Known for their ambition, fashion disasters, and never-ending dramatic stories.
+
++ what are elves
+- Elves: Long-lived woodland beings with perfect hair and the uncanny ability to judge your life choices silently.
+
++ who are dwarves
+- Dwarves: Short, stout, and stubborn. They drink like fish and mine like mole-people with a grudge.
+
++ describe halflings
+- Halflings: Like humans, but smaller, sneakier, and obsessed with second breakfasts.
+
++ what is a goblin
+- Goblins: Mischievous little gremlins who specialize in making your day worse with barely organized chaos.
+
++ tell me about orcs
+- Orcs: Big, green, loud, and usually angry. But deep down, they just want to hug... or maybe fight.
+
+// Classes
+
++ what is a wizard
+- Wizards: Scholars of arcane arts who spend most of their time reading dusty tomes or losing their spell components.
+
++ describe a rogue
+- Rogues: Masters of stealth, lockpicking, and stealing your gold when you aren’t looking.
+
++ tell me about paladins
+- Paladins: Holy warriors who smite evil... and awkwardly recite oaths during tavern brawls.
+
++ what does a bard do
+- Bards: Troubadours with questionable taste in music and an uncanny talent for distracting enemies with interpretive dance.
+
++ who are clerics
+- Clerics: Divine healers who can resurrect the dead but can’t seem to cure their own bad jokes.
+
+// Magic & Spells
+
++ what is magic
+- Magic: The convenient way to solve problems by waving hands and mumbling nonsense words.
+
++ explain fireball
+- Fireball: A fiery explosion that makes things go boom and usually burns down the nearest innocent tavern.
+
++ describe polymorph
+- Polymorph: Turning your enemy into a harmless critter, often a sheep, which rarely goes as planned.
+
++ what is necromancy
+- Necromancy: Raising the dead to fight for you. Great until they start complaining about their eternal servitude.
+
++ what does teleportation do
+- Teleportation: Instant travel, provided you don’t end up halfway through a wall.
+
++ what do you know about *
+- I have heard tales of <star>, some true, some likely made up over many drinks.
+
++ tell me about the legend of *
+- Ah, the legend of <star> is one filled with glory, mishaps, and many exaggerated claims.
+
++ *
+- I know many tales but this one eludes me. Try asking about something like elves, magic, or the quest for lost socks.
+
+< topic

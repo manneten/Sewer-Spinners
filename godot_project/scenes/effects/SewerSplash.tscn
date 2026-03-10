@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/effects/SewerSplash.gd" id="1_splash"]
+
+[node name="SewerSplash" type="CPUParticles2D"]
+script = ExtResource("1_splash")
+z_index = 115
+one_shot = true
+amount = 55
+lifetime = 0.85
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 180)
+initial_velocity_min = 85.0
+initial_velocity_max = 310.0
+color = Color(0.12, 0.08, 0.04, 1)

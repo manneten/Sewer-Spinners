@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="LimbData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/LimbData.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/abilities/HarpoonAbility.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+name = "Sewer Harpoon"
+mass = 1.2
+drag = 0.15
+color = Color(0.55, 0.52, 0.45, 1)
+wobble_intensity = 1.5
+length_multiplier = 1.0
+slow_on_hit = false
+wall_recoil_penalty = 1.0
+ability_scene = ExtResource("2")
+tier = 1
+scrap_price = 30

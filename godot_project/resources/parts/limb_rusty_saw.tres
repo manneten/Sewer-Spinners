@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LimbData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/LimbData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Rusty Saw"
+mass = 4.5
+drag = 0.20
+color = Color(0.48, 0.32, 0.18, 1)
+wobble_intensity = 1.8
+length_multiplier = 1.0
+slow_on_hit = false
+wall_recoil_penalty = 1.6

@@ -1,0 +1,37 @@
+# Godot-specific ignores
+.godot/                # The big one: contains all imported assets and metadata (Godot 4)
+.import/               # Legacy/Godot 3 equivalent of the .godot folder
+export_presets.cfg     # Can contain sensitive info or local paths
+*.translation          # Generated translation files
+
+# Mono/C# ignores (Even if you're using GDScript, these can pop up)
+.mono/
+bin/
+obj/
+
+# Build artifacts
+android/
+ios/
+build/
+*.exe
+*.zip
+*.apk
+*.dmg
+*.app
+*.linuxbsd
+*.wasm
+
+# Logic/State files (Specific to your SaveManager/Trophy system)
+# You likely want to ignore local save data so you don't overwrite your own trophies
+# Adjust these paths based on where your SaveManager writes files
+*.save
+*.dat
+user://
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
+
+# Tool-specific (if using VS Code or similar)
+.vscode/
+.history/

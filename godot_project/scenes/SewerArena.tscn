@@ -1,0 +1,227 @@
+[gd_scene load_steps=19 format=3 uid="uid://g6x5t5ityhmk"]
+
+[ext_resource type="PackedScene" path="res://scenes/entities/BeybladeBase.tscn" id="1"]
+[ext_resource type="Script" uid="uid://b0d8f8t3yp0mi" path="res://scripts/arena/WallSegment.gd" id="2"]
+[ext_resource type="Script" uid="uid://dqo01ipfcut" path="res://scripts/arena/CirclePolygon.gd" id="3"]
+[ext_resource type="Script" uid="uid://dr0bskkqvna47" path="res://scripts/arena/ArenaGravity.gd" id="4"]
+[ext_resource type="Script" uid="uid://cp8in28xeh7m3" path="res://scripts/arena/BouncePad.gd" id="5"]
+[ext_resource type="Script" uid="uid://3vupapte6sap" path="res://scripts/physics/Drain.gd" id="7"]
+[ext_resource type="Script" uid="uid://d1ohws60fh5bn" path="res://scripts/arena/MutationStation.gd" id="8"]
+[ext_resource type="Script" uid="uid://bqa5aymqyf6dl" path="res://scripts/arena/SewerArena.gd" id="9"]
+[ext_resource type="Script" uid="uid://dalnwxu8r7re0" path="res://scripts/arena/PocketWall.gd" id="11"]
+[ext_resource type="Script" uid="uid://belpy36b67xo8" path="res://scripts/arena/SludgeGeyser.gd" id="12"]
+[ext_resource type="Script" uid="uid://v43l3oxqa4nv" path="res://scripts/ui/DraftMenu.gd" id="13"]
+
+[sub_resource type="PhysicsMaterial" id="6"]
+friction = 0.1
+bounce = 0.2
+
+[sub_resource type="PhysicsMaterial" id="7"]
+friction = 0.45
+bounce = 0.12
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 483.0
+
+[sub_resource type="CircleShape2D" id="2"]
+radius = 65.0
+
+[sub_resource type="CircleShape2D" id="3"]
+radius = 65.0
+
+[sub_resource type="CircleShape2D" id="4"]
+radius = 65.0
+
+[sub_resource type="CircleShape2D" id="5"]
+radius = 65.0
+
+[node name="SewerArena" type="Node2D"]
+script = ExtResource("9")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+zoom = Vector2(0.5, 0.5)
+
+[node name="WallRight" type="StaticBody2D" parent="."]
+position = Vector2(576, 324)
+physics_material_override = SubResource("6")
+script = ExtResource("2")
+start_angle_deg = -30.0
+end_angle_deg = 30.0
+
+[node name="WallVisual" type="Polygon2D" parent="WallRight"]
+color = Color(0.12, 0.12, 0.15, 1)
+
+[node name="WallShape" type="CollisionPolygon2D" parent="WallRight"]
+
+[node name="WallBottom" type="StaticBody2D" parent="."]
+position = Vector2(576, 324)
+physics_material_override = SubResource("6")
+script = ExtResource("2")
+start_angle_deg = 60.0
+end_angle_deg = 120.0
+
+[node name="WallVisual" type="Polygon2D" parent="WallBottom"]
+color = Color(0.12, 0.12, 0.15, 1)
+
+[node name="WallShape" type="CollisionPolygon2D" parent="WallBottom"]
+
+[node name="WallLeft" type="StaticBody2D" parent="."]
+position = Vector2(576, 324)
+physics_material_override = SubResource("6")
+script = ExtResource("2")
+start_angle_deg = 150.0
+end_angle_deg = 210.0
+
+[node name="WallVisual" type="Polygon2D" parent="WallLeft"]
+color = Color(0.12, 0.12, 0.15, 1)
+
+[node name="WallShape" type="CollisionPolygon2D" parent="WallLeft"]
+
+[node name="WallTop" type="StaticBody2D" parent="."]
+position = Vector2(576, 324)
+physics_material_override = SubResource("6")
+script = ExtResource("2")
+start_angle_deg = 240.0
+end_angle_deg = 300.0
+
+[node name="WallVisual" type="Polygon2D" parent="WallTop"]
+color = Color(0.12, 0.12, 0.15, 1)
+
+[node name="WallShape" type="CollisionPolygon2D" parent="WallTop"]
+
+[node name="CornerAtMutation" type="StaticBody2D" parent="."]
+position = Vector2(576, 324)
+physics_material_override = SubResource("7")
+script = ExtResource("11")
+
+[node name="WallVisual" type="Polygon2D" parent="CornerAtMutation"]
+color = Color(0.18, 0.18, 0.22, 1)
+
+[node name="WallShape" type="CollisionPolygon2D" parent="CornerAtMutation"]
+
+[node name="CornerAtGunk" type="StaticBody2D" parent="."]
+position = Vector2(576, 324)
+physics_material_override = SubResource("7")
+script = ExtResource("11")
+pocket_center_deg = 135.0
+
+[node name="WallVisual" type="Polygon2D" parent="CornerAtGunk"]
+color = Color(0.18, 0.18, 0.22, 1)
+
+[node name="WallShape" type="CollisionPolygon2D" parent="CornerAtGunk"]
+
+[node name="CornerAtBounce" type="StaticBody2D" parent="."]
+position = Vector2(576, 324)
+physics_material_override = SubResource("7")
+script = ExtResource("11")
+pocket_center_deg = 225.0
+
+[node name="WallVisual" type="Polygon2D" parent="CornerAtBounce"]
+color = Color(0.18, 0.18, 0.22, 1)
+
+[node name="WallShape" type="CollisionPolygon2D" parent="CornerAtBounce"]
+
+[node name="CornerAtAbyss" type="StaticBody2D" parent="."]
+position = Vector2(576, 324)
+physics_material_override = SubResource("7")
+script = ExtResource("11")
+pocket_center_deg = 315.0
+
+[node name="WallVisual" type="Polygon2D" parent="CornerAtAbyss"]
+color = Color(0.18, 0.18, 0.22, 1)
+
+[node name="WallShape" type="CollisionPolygon2D" parent="CornerAtAbyss"]
+
+[node name="ArenaGravity" type="Area2D" parent="."]
+position = Vector2(576, 324)
+script = ExtResource("4")
+
+[node name="GravityShape" type="CollisionShape2D" parent="ArenaGravity"]
+shape = SubResource("1")
+
+[node name="Zones" type="Node2D" parent="."]
+
+[node name="BouncePad" type="Area2D" parent="Zones"]
+position = Vector2(201, -51)
+script = ExtResource("5")
+
+[node name="Visual" type="Polygon2D" parent="Zones/BouncePad"]
+color = Color(0.2, 0.85, 0.3, 0.75)
+script = ExtResource("3")
+radius = 65.0
+
+[node name="Shape" type="CollisionShape2D" parent="Zones/BouncePad"]
+shape = SubResource("2")
+
+[node name="Abyss" type="Area2D" parent="Zones"]
+position = Vector2(951, -51)
+script = ExtResource("12")
+
+[node name="Visual" type="Polygon2D" parent="Zones/Abyss"]
+color = Color(0.05, 0.05, 0.05, 0.9)
+script = ExtResource("3")
+radius = 65.0
+
+[node name="Shape" type="CollisionShape2D" parent="Zones/Abyss"]
+shape = SubResource("3")
+
+[node name="GunkDrain" type="Area2D" parent="Zones"]
+position = Vector2(201, 699)
+script = ExtResource("7")
+gunk_damping = 0.9
+
+[node name="Visual" type="Polygon2D" parent="Zones/GunkDrain"]
+color = Color(0.5, 0.1, 0.6, 0.75)
+script = ExtResource("3")
+radius = 65.0
+
+[node name="Shape" type="CollisionShape2D" parent="Zones/GunkDrain"]
+shape = SubResource("4")
+
+[node name="MutationStation" type="Area2D" parent="Zones"]
+position = Vector2(951, 699)
+script = ExtResource("8")
+
+[node name="Visual" type="Polygon2D" parent="Zones/MutationStation"]
+color = Color(0.95, 0.8, 0.1, 0.75)
+script = ExtResource("3")
+radius = 65.0
+
+[node name="Shape" type="CollisionShape2D" parent="Zones/MutationStation"]
+shape = SubResource("5")
+
+[node name="Player_Red" parent="." instance=ExtResource("1")]
+position = Vector2(375, 324)
+linear_damp = 1.5
+team_color = Color(0.9, 0.15, 0.2, 1)
+
+[node name="Player_Blue" parent="." instance=ExtResource("1")]
+position = Vector2(777, 324)
+linear_damp = 1.5
+team_color = Color(0.15, 0.5, 0.95, 1)
+
+[node name="DraftMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("13")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="KOLabel" type="Label" parent="HUD"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 96
+text = "K.O."
+horizontal_alignment = 1
+vertical_alignment = 1

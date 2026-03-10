@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ChassisData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/ChassisData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Rusty Manhole"
+mass = 10.0
+drag = 0.04
+color = Color(0.22, 0.22, 0.24, 1)
+base_torque = 12000.0
+base_friction = 0.65
+cooldown_reduction = 0.25

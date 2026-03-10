@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LimbData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/LimbData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Rat Fang"
+mass = 3.15
+drag = 0.22
+color = Color(0.52, 0.38, 0.22, 1)
+wobble_intensity = 1.8
+length_multiplier = 1.15
+slow_on_hit = false
+wall_recoil_penalty = 1.2

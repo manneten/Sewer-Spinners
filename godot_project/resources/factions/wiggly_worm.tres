@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FactionData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/FactionData.gd" id="1"]
+[ext_resource type="Resource" path="res://resources/parts/limb_ethereal_vapor.tres" id="2"]
+[ext_resource type="Resource" path="res://resources/parts/limb_sewer_harpoon.tres" id="3"]
+[ext_resource type="Resource" path="res://resources/parts/limb_fleshy_tongue.tres" id="4"]
+[ext_resource type="Resource" path="res://resources/parts/chassis_worm_queen.tres" id="5"]
+
+[resource]
+script = ExtResource("1")
+faction_id = "wiggly_worm"
+display_name = "Wiggly Worm"
+rep_per_win = 10
+rep_per_loss = 3
+boss_unlock_threshold = 50
+shop_limbs = [ExtResource("2"), ExtResource("3"), ExtResource("4")]
+boss_chassis = ExtResource("5")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfuflsbgkgypl"]
+
+[ext_resource type="Script" path="res://addons/gd_rive/editor/topic_tree.gd" id="1_vgbl3"]
+
+[node name="TopicTree" type="Tree"]
+custom_minimum_size = Vector2(256, 256)
+offset_right = 16.0
+offset_bottom = 17.0
+hide_root = true
+script = ExtResource("1_vgbl3")

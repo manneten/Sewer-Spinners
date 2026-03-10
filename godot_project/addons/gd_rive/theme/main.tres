@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://0arsowmeulwx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spbmi"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[resource]
+CodeEdit/colors/background_color = Color(0.121569, 0.121569, 0.121569, 1)
+CodeEdit/colors/line_number_color = Color(0.670588, 0.345098, 0.670588, 0.847059)
+RichTextLabel/styles/background = SubResource("StyleBoxFlat_spbmi")
+VBoxContainer/constants/separation = 2

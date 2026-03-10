@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/physics/LimbManager.gd" id="1"]
+
+[node name="Ghoul_Base" type="Node2D"]
+script = ExtResource("1")
+
+; Torso placeholder — swap for RiveSprite when .riv files arrive.
+[node name="Torso_Sprite" type="ColorRect" parent="."]
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+color = Color(0.45, 0.45, 0.52, 1)
+
+; ---- Sockets ----------------------------------------------------------------
+; Positions define both mount point AND the outward direction used by
+; LimbManager to calculate centrifugal jiggle.
+
+[node name="Socket_Left_Arm" type="Marker2D" parent="."]
+position = Vector2(-50, 0)
+
+[node name="Socket_Right_Arm" type="Marker2D" parent="."]
+position = Vector2(50, 0)

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ChassisData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/ChassisData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Worm Queen"
+mass = 1.8
+drag = 0.01
+color = Color(0.55, 0.95, 0.42, 1)
+base_torque = 26000.0
+base_friction = 0.08

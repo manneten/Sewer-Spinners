@@ -1,0 +1,124 @@
+
+> topic common
+
++ common knowledge
+- Everyone knows something... or at least pretends to.
+
++ what is the capital of goblin country
+- Goblintown. Not very creative, but easy to remember.
+
++ who is the king of the realm
+- King Bartholomew the Slightly Confused, ruler of most maps.
+
++ what is the most popular drink
+- Dragonbrew Ale — tastes like smoke, regret, and victory.
+
++ what do adventurers eat
+- Mostly trail rations, bread, and whatever they can stab.
+
++ who are the most dangerous bandits
+- The Red Scarf Gang — they knit their own scarves.
+
++ what is the safest road
+- None. Safety is a myth invented by cartographers.
+
++ what is the currency here
+- Gold coins, silver coins, and occasionally barter with cheese.
+
++ where do elves live
+- In the Forest of Eternal Poetry... and smugness.
+
++ what do dwarves value most
+- Gold, stonework, and winning arguments about gold and stonework.
+
++ what language do dragons speak
+- Draconic — it’s like Common but angrier.
+
++ what is the best armor
+- The one you can afford and actually walk in.
+
++ who is the greatest bard
+- Lyra Loudnote — known for singing so high glass explodes.
+
++ what is the most common monster
+- Slimes. They’re everywhere, and they’re sticky.
+
++ where is the best market
+- Brasshorn Bazaar — you can buy anything... even stuff you shouldn’t.
+
++ what do mages fear
+- Running out of spell slots. And paperwork.
+
++ who runs the thieves’ guild
+- A mysterious figure known only as “The Accountant.”
+
++ what is the weather like
+- Unpredictable. It might rain frogs, fire, or both.
+
++ what do orcs respect
+- Strength, honor, and a well-cooked steak.
+
++ where do adventurers start
+- Usually in a tavern, after one too many drinks.
+
++ what is the most dangerous dungeon
+- The Maw of Screams — known for its screams. And maw.
+
++ what is the festival of fools
+- A yearly event where everyone acts ridiculous on purpose.
+
++ who makes the best weapons
+- Grimsteel Forge — if you can afford the “hero discount.”
+
++ what do gnomes invent
+- Gadgets, gizmos, and occasional minor disasters.
+
++ what is the largest city
+- Grandspire — home to the tallest towers and the nosiest neighbors.
+
++ what is the rule about magic in town
+- No spells within city limits, unless you bribe the guards.
+
++ who are the royal knights
+- The Order of the Shiny Helmets. Very shiny.
+
++ what is the national dish
+- Stew. Nobody knows what’s in it, and it’s better not to ask.
+
++ where is the cursed swamp
+- South of Nowhere, west of Regret.
+
++ what’s the most common greeting
+- “Don’t stab me” — polite and practical.
+
++ what’s the first rule of adventuring
+- Never split the party. Unless you want a good story.
+
++ what do halflings love most
+- Comfort, pie, and being underestimated.
+
++ where do trolls live
+- Under bridges, in caves, and occasionally in your pantry.
+
++ what is the most feared curse
+- The Itchy Boots Hex — worse than it sounds.
+
++ who runs the mage academy
+- Archmage Crumblewand — easily distracted by biscuits.
+
++ what is the national anthem about
+- A sheep, a sword, and a surprisingly catchy chorus.
+
++ what do sailors fear
+- Sea serpents, storms, and sober landings.
+
++ who is the local healer
+- Sister Porridge — gentle hands, terrible cooking.
+
++ what is the most common job
+- Farmer. Not glamorous, but fewer goblins.
+
++ what is the fastest way to get rich
+- Marry into it. Adventuring works too, but with more stabbing.
+
+< topic

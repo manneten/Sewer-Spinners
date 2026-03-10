@@ -1,0 +1,19 @@
+TODO:
+
+Draft menu: 
+Hover frames extended from non extended smoother.
+Background update in paint.(top bar for resources)
+beyblade build texts on the papers, animated cool.
+
+
+Fighting:
+Sludge_Geyser crush impact still not working.
+COMBO COUNTER, EVERY COMBO INCREASES KNOCKBACK BY 3%?
+WEATHER EFFECT IDEAS
+MASS IMPORT 5 ABILITY ITEMS, FISHING ROD?
+FIX STALLED OUT FIGHTS (RARE)
+
+
+Visuals:
+Added Arena floor shadows to assets(still needs to be implemented into the game)
+RATS FURTHER OUT, N MORE RATS

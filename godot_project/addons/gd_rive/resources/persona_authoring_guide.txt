@@ -1,0 +1,125 @@
+[center][b]Persona Authoring Guide[/b][/center]
+[i]For writers and designers creating dialogue personas for the RiveScript engine[/i]
+
+---
+
+[b]What is a Persona?[/b]
+A persona defines the behavior, voice, memory, and dialogue rules for a specific character in your game. Each persona is written in `rive` syntax and governs how that character responds to player inputs.
+
+Use this guide to understand how to craft rich, dynamic conversations that feel grounded in the character’s personality.
+
+[b][u]Core Concepts[/u][/b]
+
+[b]+ Trigger[/b]
+A player input pattern to match. Example: [code]+ hello[/code]
+
+[b]- Reply[/b]
+What the persona says in response. Example: [code]- Greetings, traveler.[/code]
+
+[b]* Wildcard[/b]
+Matches any input word(s). Example: [code]+ my name is *[/code]
+
+[b][*] Mid-wildcard[/b]
+Matches anything before/after — used for in-line matching.
+
+[b]@array[/b]
+Define reusable lists. Example: [code]! array color = red green blue[/code]  
+Used in triggers: [code]+ I like @color[/code]
+
+[b]! sub[/b]
+Normalize user input. Example: [code]! sub i'm = i am[/code]
+
+[b]<set>/<get>[/b]
+Store and retrieve memory.  
+[code]+ my name is *[/code]  
+[code]- Nice to meet you, <set name=<star>>.[/code]
+
+[b]<condition>[/b]
+Branch dialogue based on state or memory.  
+[code]* <get mood> == happy => That’s great![/code]
+
+[b]! topic[/b]
+Group related dialogue together. Switch topics using [code]<set topic=name>[/code]
+
+--
+
+[b][u]Design Patterns[/u][/b]
+
+[b]1. First-Time Greeting[/b]
+[code]
++ hello
+* <condition greeted> => Welcome back.
+** Hello stranger. <flag greeted=true>
+[/code]
+
+[b]2. Scene Switching[/b]
+[code]
++ tell me about the forest
+- Certainly. <set topic=forest>
+[/code]
+
+[b]3. Memory-Based Reply[/b]
+[code]
++ my name is *
+- <set name=<star>>Nice to meet you, <get name>.
+[/code]
+
+[b]4. Conditional Emotion[/b]
+[code]
++ how are you
+* <get mood> == sad => I've had better days.
+* <get mood> == happy => Full of joy today!
+** I'm... complicated.
+[/code]
+
+[b]5. Randomized Flavor[/b]
+[code]
+! var flavor = {mysterious|friendly|gruff}
++ describe yourself
+- I'm feeling <bot flavor> today.
+[/code]
+---
+
+[b][u]Common Mistakes[/u][/b]
+
+• Forgetting to close topics: Use [code]< topic[/code]
+• Missing [code]**[/code] fallback after conditionals
+• Confusing @arrays with (a|b|c) regex alternation
+• Leaving trailing [code]<set>[/code] tags malformed
+• Not testing topics after a switch
+
+---
+
+[b][u]Character Design Tips[/u][/b]
+
+• Use multiple replies under a trigger to show variance
+• Store key memories with <set> and respond accordingly
+• Change topics naturally when scenes change
+• Set flags like [code]<flag met_sage=true>[/code] for world state
+• Use bot vars or <call> macros for dynamic behavior
+
+---
+
+[b][u]Cheatsheet Reference[/u][/b]
+[code]
++             = Trigger
+-             = Reply
+^             = Line continuation
+*             = Wildcard (any word)
+[*]           = Inline match wildcard (trigger)
+@array        = Group of possible matches
+<set>/<get>   = Store and recall user memory
+<star>        = Reference a trigger wildcard in a reply
+<flag>        = Set boolean value in RiveConditions
+<data>        = Store numeric or text value
+<condition>   = Conditional response branching
+<bot>         = Inject randomized bot-side value
+<call>        = Call function from RiveMacros
+<global>      = Call external singleton method (no return)
+<call-global> = Call and insert return from singleton method
+<get-global>  = Get value from a from singleton property
+<set-global>  = Set value on a singleton property
+[/code]
+---
+
+[i]Need more? Open the Rive Editor Dock, double-click a trigger to simulate it, or view the Topic Tree for flow control.[/i]

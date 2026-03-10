@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp:*)",
+      "Bash(ls:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:help.rive.app)",
+      "Read(//c/Users/Manne/**)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(scons:*)",
+      "WebSearch",
+      "WebFetch(domain:godotengine.org)",
+      "WebFetch(domain:forum.godotengine.org)",
+      "WebFetch(domain:rive.app)",
+      "WebFetch(domain:feedback.rive.app)",
+      "WebFetch(domain:en.esotericsoftware.com)",
+      "Bash(python3:*)",
+      "Bash(for f in \"C:\\\\Users\\\\Manne\\\\documents\\\\sewer_slots\\\\godot_project\\\\resources\\\\parts\"/*.tres)",
+      "Bash(do echo \"=== $f ===\")",
+      "Read(//c/Users/Manne/documents/sewer_slots/**)",
+      "Bash(done)"
+    ]
+  }
+}

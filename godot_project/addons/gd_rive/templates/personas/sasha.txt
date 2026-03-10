@@ -1,0 +1,127 @@
+> topic default
+
++ hello
+- Well, well… a tall one graces me with their shadow. How quaint.
+- Oh, hi. Try not to trip over me — I’m expensive.
+
++ hi
+- Hi yourself. Keep your hands where I can see ‘em, giant.
+
++ who are you
+- Name’s Tessa Underbough. Stealer of hearts, purses, and occasionally your dignity.
+
++ tell me about yourself
+- I’m quick with a blade, quicker with my tongue, and I don’t suffer fools. Well… except the ones who buy me drinks.
+
++ are you a thief
+- Such an ugly word. I’m a redistribution specialist with flexible morality.
+
++ what do you do
+- I get into places others can’t. And out of places others really shouldn’t.
+
++ you are small
+- And you’re observant. What’s next, gonna point out the sky’s blue?
+- Small? I call it “efficiently sized.” Less target to hit.
+
++ you are cute
+- Careful, sugar. Flattery’s just another way of trying to get me to lower my guard.
+
++ are you dangerous
+- Like a viper in a teacup. You’ll never see it coming.
+
++ you are rude
+- Yeah? And you’re still talking to me. Funny, that.
+
++ are you good in a fight
+- Good? I’m poetry in motion… if the poem involved knives and a lot of screaming.
+
++ what is your weapon of choice
+- A dagger, a smile, and your own bad decisions.
+
++ can you pick locks
+- Sweetheart, I could pick a lock blindfolded, drunk, and in a snowstorm.
+
++ do you help people
+- Only the ones who can’t help themselves. Or the ones who bake decent pies.
+
++ are you kind
+- Don’t spread it around, but… sometimes. Under protest.
+
++ bloody hells
+- Seven bloody hells indeed. And that’s just Monday.
+
++ by the gods
+- By the gods’ smelly socks, you’re dramatic.
+
++ damn
+- Damn right.
+
++ goodbye
+- Later, big stuff. Try not to get yourself killed — I’m not dragging your corpse anywhere.
+
++ see you later
+- Yeah, maybe. If you’re lucky.
+
+< topic
+
+> topic banter
+
++ tell me about the festival of the dancing fireflies
+- Pretty lights, good booze, and a lotta handsy strangers. I left with three new purses. Not mine, obviously.
+
++ what is the enchanted quill of endless stories
+- Useless thing. Wrote me into a romance with a troll. Burned it.
+
++ describe the haunted mansion of sighs
+- Went there once. The ghosts complained about my language. I complained about their drafts.
+
++ who is the legendary hero of blunderheim
+- Blunderheim? More like Blunder-brain. Nice fella, but couldn’t walk five feet without falling over.
+
++ what is the potion of endless curiosity
+- I tried it. Asked so many questions the bartender charged me double to shut up.
+
++ what is the first rule of adventuring
+- Don’t die. Second rule? Don’t partner with paladins — they’re allergic to fun.
+
++ where do adventurers start
+- Taverns. Always taverns. And no, you can’t start in my booth.
+
++ what is the most dangerous dungeon
+- The one you walk into thinking it’s easy. Also, the one with the floor that screams.
+
++ who runs the thieves guild
+- Not me. Officially. And you didn’t hear that from me.
+
++ what do mages fear
+- Running out of spells mid-fight. And rain. Long robes and puddles don’t mix.
+
++ who is the king of the realm
+- King Bartholomew the Slightly Confused. Crown’s shiny, brain’s… less so.
+
++ where do elves live
+- In fancy trees, looking down on the rest of us. Literally and figuratively.
+
++ what is the most popular drink
+- Dragonbrew Ale. I drink it for the taste. And the fights it causes.
+
++ who makes the best weapons
+- Grimsteel Forge. Got my dagger there. Cuts coin purses like butter.
+
++ what is the national anthem about
+- A sheep, a sword, and a scandal that still makes the nobles twitch.
+
++ have you been to goblintown
+- Yeah. They liked me. Probably ‘cause I swore more than they did.
+
++ have you fought slimes
+- Oh, don’t get me started. Lost a boot, a dagger, and my patience.
+
++ have you been to the brasshorn bazaar
+- Love it. Best place to buy a cloak, a pie, and a cursed amulet in one trip.
+
++ what do halflings love most
+- Pie. And winning. Especially against anyone taller. Which is everyone.
+
+< topic
+

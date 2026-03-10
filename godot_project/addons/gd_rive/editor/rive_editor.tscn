@@ -1,0 +1,239 @@
+[gd_scene load_steps=19 format=3 uid="uid://djirk6rbmbdkk"]
+
+[ext_resource type="Script" path="res://addons/gd_rive/editor/rive_editor.gd" id="1_lhp56"]
+[ext_resource type="Theme" uid="uid://0arsowmeulwx" path="res://addons/gd_rive/theme/main.tres" id="2_mqdp2"]
+[ext_resource type="Script" path="res://addons/gd_rive/editor/rive_syntax_highlighter.gd" id="2_q0v1w"]
+[ext_resource type="Script" path="res://addons/gd_rive/editor/rive_code_edit.gd" id="2_qys6h"]
+[ext_resource type="Texture2D" uid="uid://dsxrqhbbe8g3q" path="res://addons/gd_rive/resources/icons/icon_select_file.png" id="3_40j4q"]
+[ext_resource type="Texture2D" uid="uid://dym52t6jnakvm" path="res://addons/gd_rive/resources/icons/icon_save.png" id="3_1621m"]
+[ext_resource type="Texture2D" uid="uid://kd1ipv0i0a7k" path="res://addons/gd_rive/resources/icons/icon_load.png" id="3_hgsy8"]
+[ext_resource type="Texture2D" uid="uid://d2e3dykck7jml" path="res://addons/gd_rive/resources/icons/help_icon.png" id="4_4gqhh"]
+[ext_resource type="Texture2D" uid="uid://c0tjieybsf6rv" path="res://addons/gd_rive/resources/icons/icon_new.png" id="4_o6cfh"]
+[ext_resource type="PackedScene" uid="uid://bfuflsbgkgypl" path="res://addons/gd_rive/editor/topic_tree.tscn" id="5_v07mc"]
+[ext_resource type="Texture2D" uid="uid://c81wdes6gelk6" path="res://addons/gd_rive/resources/icons/icon_visibility_off.png" id="5_wpbl6"]
+[ext_resource type="Texture2D" uid="uid://bi1b1y4w168x7" path="res://addons/gd_rive/resources/icons/icon_flask.png" id="9_v5qaq"]
+[ext_resource type="Texture2D" uid="uid://bb0qrjkeu67m" path="res://addons/gd_rive/resources/icons/icon_play.png" id="10_offle"]
+[ext_resource type="Texture2D" uid="uid://dpfp72tplt36m" path="res://addons/gd_rive/resources/icons/icon_persona.png" id="11_6dxg7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kol3f"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_goa7b"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rmxd"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[sub_resource type="SyntaxHighlighter" id="SyntaxHighlighter_kyq6m"]
+script = ExtResource("2_q0v1w")
+
+[node name="RiveEditor" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+theme = ExtResource("2_mqdp2")
+script = ExtResource("1_lhp56")
+
+[node name="FlatDist" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Spacer_1" type="Control" parent="TopBar"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Select" type="TextureRect" parent="TopBar"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("3_40j4q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Spacer_2" type="Control" parent="TopBar"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="RiveSelector" type="CheckButton" parent="TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FileSelector" type="OptionButton" parent="TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "eleanora.txt"
+popup/item_1/text = "gronk.txt"
+popup/item_1/id = 1
+popup/item_2/text = "sasha.txt"
+popup/item_2/id = 2
+popup/item_3/text = "test.txt"
+popup/item_3/id = 3
+
+[node name="Spacer_3" type="Control" parent="TopBar"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="Rive" type="TextureRect" parent="TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("11_6dxg7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="TopBar"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GenerateButton" type="Button" parent="TopBar"]
+visible = false
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Create Templates"
+
+[node name="HelpButton" type="Button" parent="TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("4_4gqhh")
+
+[node name="NewButton" type="Button" parent="TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("4_o6cfh")
+
+[node name="LoadButton" type="Button" parent="TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("3_hgsy8")
+
+[node name="SaveButton" type="Button" parent="TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("3_1621m")
+
+[node name="VisButton" type="Button" parent="TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("5_wpbl6")
+
+[node name="Spacer_4" type="Control" parent="TopBar"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+
+[node name="TestBar" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = ExtResource("2_mqdp2")
+
+[node name="Spacer_1" type="Control" parent="TestBar"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Test" type="TextureRect" parent="TestBar"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("9_v5qaq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Spacer_2" type="Control" parent="TestBar"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="TestInput" type="LineEdit" parent="TestBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(8, 0.6, 0, 1)
+placeholder_text = "Enter Test Input ..."
+alignment = 1
+caret_blink = true
+caret_blink_interval = 0.8
+
+[node name="TestButton" type="Button" parent="TestBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+text = "Run"
+icon = ExtResource("10_offle")
+
+[node name="OutputLabel" type="RichTextLabel" parent="TestBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_mqdp2")
+theme_override_colors/default_color = Color(0.3, 0.7, 0.5, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_kol3f")
+theme_override_styles/focus = SubResource("StyleBoxFlat_goa7b")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4rmxd")
+bbcode_enabled = true
+
+[node name="TitleBar" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Spacer_1" type="Control" parent="TitleBar"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="File" type="TextureRect" parent="TitleBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("11_6dxg7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Spacer_2" type="Control" parent="TitleBar"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="FileTitleLabel" type="Label" parent="TitleBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_alignment = 1
+
+[node name="EditorPanel" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextEdit" type="CodeEdit" parent="EditorPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_mqdp2")
+caret_blink = true
+caret_blink_interval = 0.8
+syntax_highlighter = SubResource("SyntaxHighlighter_kyq6m")
+highlight_all_occurrences = true
+highlight_current_line = true
+gutters_draw_line_numbers = true
+auto_brace_completion_highlight_matching = true
+script = ExtResource("2_qys6h")
+
+[node name="TopicList" type="VBoxContainer" parent="EditorPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+
+[node name="TopicTree" parent="EditorPanel/TopicList" instance=ExtResource("5_v07mc")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="toggled" from="TopBar/RiveSelector" to="." method="_on_rive_selector_toggled"]
+[connection signal="pressed" from="TopBar/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="TopBar/NewButton" to="." method="_on_new_button_pressed"]
+[connection signal="pressed" from="TopBar/VisButton" to="." method="_on_vis_button_pressed"]
+[connection signal="item_activated" from="EditorPanel/TopicList/TopicTree" to="." method="_on_topic_tree_item_activated"]

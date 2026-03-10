@@ -1,0 +1,11 @@
+[configuration]
+entry_symbol = "rive_godot_library_init"
+compatibility_minimum = "4.2"
+
+[libraries]
+macos.debug = "res://addons/rive/bin/librive.macos.template_debug.framework"
+macos.release = "res://addons/rive/bin/librive.macos.template_release.framework"
+
+# Windows and Linux binaries are not bundled.
+# Download them from the kibble-cabal/godot-rive GitHub releases page
+# and place them in res://addons/rive/bin/ before adding RiveViewer nodes.

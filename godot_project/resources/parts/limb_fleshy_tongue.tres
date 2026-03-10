@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LimbData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/LimbData.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/abilities/TongueWhipAbility.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+name = "Fleshy Tongue"
+mass = 1.5
+drag = 0.55
+color = Color(0.85, 0.18, 0.38, 1)
+wobble_intensity = 2.4
+length_multiplier = 0.8
+ability_scene = ExtResource("2")

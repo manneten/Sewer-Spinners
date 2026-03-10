@@ -1,0 +1,191 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmsqqni3mgrdc"]
+
+[ext_resource type="Script" path="res://addons/gd_rive/editor/help_viewer.gd" id="1_8w5xn"]
+[ext_resource type="Script" path="res://addons/gd_rive/editor/help_dialog.gd" id="1_l5yb3"]
+[ext_resource type="FontFile" uid="uid://dnexm02f5356p" path="res://addons/gd_rive/resources/fonts/Courier Prime.ttf" id="2_cl2dk"]
+
+[node name="Window" type="Window"]
+initial_position = 1
+size = Vector2i(1024, 512)
+script = ExtResource("1_l5yb3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HelpViewer" type="HSplitContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1024, 256)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_8w5xn")
+
+[node name="HeadingsTree" type="Tree" parent="VBoxContainer/HelpViewer"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+hide_root = true
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HelpViewer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HelpViewer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Helptextlabel" type="RichTextLabel" parent="VBoxContainer/HelpViewer/Panel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/mono_font = ExtResource("2_cl2dk")
+bbcode_enabled = true
+text = "[center][b]Persona Authoring Guide[/b][/center]
+[i]For writers and designers creating dialogue personas for the RiveScript engine[/i]
+
+---
+
+[b]What is a Persona?[/b]
+A persona defines the behavior, voice, memory, and dialogue rules for a specific character in your game. Each persona is written in `rive` syntax and governs how that character responds to player inputs.
+
+Use this guide to understand how to craft rich, dynamic conversations that feel grounded in the character’s personality.
+
+[b][u]Core Concepts[/u][/b]
+
+[b]+ Trigger[/b]
+A player input pattern to match. Example: [code]+ hello[/code]
+
+[b]- Reply[/b]
+What the persona says in response. Example: [code]- Greetings, traveler.[/code]
+
+[b]* Wildcard[/b]
+Matches any input word(s). Example: [code]+ my name is *[/code]
+
+[b][*] Mid-wildcard[/b]
+Matches anything before/after — used for in-line matching.
+
+[b]@array[/b]
+Define reusable lists. Example: [code]! array color = red green blue[/code]  
+Used in triggers: [code]+ I like @color[/code]
+
+[b]! sub[/b]
+Normalize user input. Example: [code]! sub i'm = i am[/code]
+
+[b]<set>/<get>[/b]
+Store and retrieve memory.  
+[code]+ my name is *[/code]  
+[code]- Nice to meet you, <set name=<star>>.[/code]
+
+[b]<condition>[/b]
+Branch dialogue based on state or memory.  
+[code]* <get mood> == happy => That’s great![/code]
+
+[b]! topic[/b]
+Group related dialogue together. Switch topics using [code]<set topic=name>[/code]
+
+--
+
+[b][u]Design Patterns[/u][/b]
+
+[b]1. First-Time Greeting[/b]
+[code]
++ hello
+* <condition greeted> => Welcome back.
+** Hello stranger. <flag greeted=true>
+[/code]
+
+[b]2. Scene Switching[/b]
+[code]
++ tell me about the forest
+- Certainly. <set topic=forest>
+[/code]
+
+[b]3. Memory-Based Reply[/b]
+[code]
++ my name is *
+- <set name=<star>>Nice to meet you, <get name>.
+[/code]
+
+[b]4. Conditional Emotion[/b]
+[code]
++ how are you
+* <get mood> == sad => I've had better days.
+* <get mood> == happy => Full of joy today!
+** I'm... complicated.
+[/code]
+
+[b]5. Randomized Flavor[/b]
+[code]
+! var flavor = {mysterious|friendly|gruff}
++ describe yourself
+- I'm feeling <bot flavor> today.
+[/code]
+---
+
+[b][u]Common Mistakes[/u][/b]
+
+• Forgetting to close topics: Use [code]< topic[/code]
+• Missing [code]**[/code] fallback after conditionals
+• Confusing @arrays with (a|b|c) regex alternation
+• Leaving trailing [code]<set>[/code] tags malformed
+• Not testing topics after a switch
+
+---
+
+[b][u]Character Design Tips[/u][/b]
+
+• Use multiple replies under a trigger to show variance
+• Store key memories with <set> and respond accordingly
+• Change topics naturally when scenes change
+• Set flags like [code]<flag met_sage=true>[/code] for world state
+• Use bot vars or <call> macros for dynamic behavior
+
+---
+
+[b][u]Cheatsheet Reference[/u][/b]
+[code]
++             = Trigger
+-             = Reply
+^             = Line continuation
+*             = Wildcard (any word)
+[*]           = Inline match wildcard (trigger)
+@array        = Group of possible matches
+<set>/<get>   = Store and recall user memory
+<star>        = Reference a trigger wildcard in a reply
+<flag>        = Set boolean value in RiveConditions
+<data>        = Store numeric or text value
+<condition>   = Conditional response branching
+<bot>         = Inject randomized bot-side value
+<call>        = Call function from RiveMacros
+<global>      = Call external singleton method (no return)
+<call-global> = Call and insert return from singleton method
+<get-global>  = Get value from a from singleton property
+<set-global>  = Set value on a singleton property
+[/code]
+---
+
+[i]Need more? Open the Rive Editor Dock, double-click a trigger to simulate it, or view the Topic Tree for flow control.[/i]
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="CloseButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Close"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
