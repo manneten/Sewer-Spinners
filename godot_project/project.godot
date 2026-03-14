@@ -28,10 +28,6 @@ RiveConditions="*res://rive_engine/rive_conditions.gd"
 RiveMacros="*res://rive_engine/rive_macros.gd"
 RiveEngine="*res://addons/gd_rive/engine/rive_engine.gd"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/gd_rive/plugin.cfg")
-
 [gui]
 
 theme/custom="res://assets/fonts/default_theme.tres"
@@ -39,3 +35,7 @@ theme/custom="res://assets/fonts/default_theme.tres"
 [physics]
 
 common/physics_ticks_per_second=120
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

@@ -81,7 +81,10 @@ var damage_mass: float = 0.0
 
 var _limbs:     Array[Dictionary] = []
 var _spin_body: RigidBody2D
-var _base_sprite: ColorRect   # tinted by chassis colour
+var _base_sprite:    ColorRect  = null  # outer dark ring (90×90 disc in BeybladeBase)
+var _torso_sprite:   ColorRect  = null  # chassis-colour main body (72×72 in Ghoul_Base)
+var _chassis_core:   ColorRect  = null  # bright inner square, rebuilt on loadout change
+var _chassis_sprite: Sprite2D   = null  # non-null when ChassisData has a sprite_texture
 
 var _rpm_bar_pivot:    Node2D    = null  # Node2D so global_rotation is available
 var _rpm_bar_bg:       ColorRect = null
@@ -98,12 +101,30 @@ func _ready() -> void:
 	limb_left  = load(LIMB_POOL[randi() % LIMB_POOL.size()])
 	limb_right = load(LIMB_POOL[randi() % LIMB_POOL.size()])
 
-	# Tint the Base_Sprite (sibling inside BeybladeBase, two levels up from here).
+	# Grab the two placeholder rects and apply the concentric-ring look.
 	var beyblade := get_parent()
 	if beyblade:
 		_base_sprite = beyblade.get_node_or_null("Base_Sprite")
+	_torso_sprite = get_node_or_null("Torso_Sprite")
+	_build_chassis_rings()
+
+	# ── Chassis sprite ────────────────────────────────────────────────────────
+	# When the ChassisData supplies a top-down texture, hide the placeholder
+	# ColorRect and replace it with a Sprite2D scaled to fit the bey's 90 px
+	# collision diameter.  The node lives on Ghoul_Base so it spins with the bey.
+	if chassis.sprite_texture:
 		if _base_sprite:
-			_base_sprite.color = chassis.color
+			_base_sprite.color = Color(0, 0, 0, 0)        # hide dark-disc placeholder
+		var torso: ColorRect = get_node_or_null("Torso_Sprite")
+		if torso:
+			torso.color = Color(0, 0, 0, 0)               # hide chassis-colour placeholder
+		var cs        := Sprite2D.new()
+		cs.texture        = chassis.sprite_texture
+		cs.scale          = Vector2.ONE * (108.0 / float(chassis.sprite_texture.get_width()))
+		cs.z_index        = 2
+		cs.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+		add_child(cs)
+		_chassis_sprite = cs
 
 	# Resolve _spin_body BEFORE _plug_limb so ability.initialize() receives the correct reference.
 	var p := get_parent()
@@ -123,6 +144,30 @@ func _ready() -> void:
 	# Apply team colour if already set before _ready() ran.
 	if team_color.a > 0.0:
 		_tint_to_team()
+
+# ── Chassis concentric rings ──────────────────────────────────────────────────
+# Three visual layers create depth without any sprites:
+#   Base_Sprite  (90×90 in BeybladeBase) → dark outer ring  (visible as a 9-px border)
+#   Torso_Sprite (72×72 in Ghoul_Base)   → chassis-colour main body
+#   _chassis_core (22×22, programmatic)  → bright centre highlight
+func _build_chassis_rings() -> void:
+	if _chassis_sprite != null:
+		return  # sprite path; leave placeholders hidden
+	if _base_sprite:
+		_base_sprite.color  = chassis.color.darkened(0.65)
+	if _torso_sprite:
+		_torso_sprite.color = chassis.color
+	# Rebuild the bright core (free old one first on hot-swap).
+	if is_instance_valid(_chassis_core):
+		_chassis_core.free()
+	_chassis_core              = ColorRect.new()
+	_chassis_core.size         = Vector2(22.0, 22.0)
+	_chassis_core.position     = Vector2(-11.0, -11.0)
+	_chassis_core.color        = chassis.color.lightened(0.55)
+	_chassis_core.z_index      = 3
+	_chassis_core.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_chassis_core)
+
 
 # Sets mass on the RigidBody2D using 10% of limb mass so spin stays healthy.
 # Full limb mass is stored in damage_mass for use in collision penalty.
@@ -155,6 +200,51 @@ func _plug_limb(socket: Marker2D, data: LimbData) -> void:
 	rect.position = Vector2(minf(outward_dir.x, 0.0) * limb_len, -LIMB_SIZE.y * 0.5)
 	rect.color    = data.color
 	socket.add_child(rect)
+
+	# ── Outline border ────────────────────────────────────────────────────────
+	# A near-black rect 4 px larger on every side, drawn behind the main rect.
+	# Being a child of rect it follows jiggle automatically.
+	var outline              := ColorRect.new()
+	outline.size              = Vector2(limb_len + 8.0, LIMB_SIZE.y + 8.0)
+	outline.position          = Vector2(-4.0, -4.0)
+	outline.color             = Color(0.06, 0.04, 0.02, 1.0)
+	outline.show_behind_parent = true
+	outline.mouse_filter      = Control.MOUSE_FILTER_IGNORE
+	rect.add_child(outline)
+
+	# ── Tip strike marker ─────────────────────────────────────────────────────
+	# Small bright square at the weapon end — traces the hitbox circle visually.
+	var tip_size  := 8.0
+	var tip_x     := (limb_len - tip_size) if outward_dir.x >= 0.0 else 0.0
+	var tip              := ColorRect.new()
+	tip.size              = Vector2(tip_size, tip_size)
+	tip.position          = Vector2(tip_x, LIMB_SIZE.y * 0.5 - tip_size * 0.5)
+	tip.color             = Color(0.98, 0.94, 0.78, 0.95)
+	tip.mouse_filter      = Control.MOUSE_FILTER_IGNORE
+	rect.add_child(tip)
+
+	# ── Limb sprite ───────────────────────────────────────────────────────────
+	# When the LimbData supplies a texture, hide the placeholder ColorRect and
+	# attach a Sprite2D as a child so it inherits jiggle/wobble automatically.
+	# Scaled so the sprite height = LIMB_SIZE.y * 2.2 (gives the art breathing
+	# room; adjust the multiplier to taste once seen in-game).
+	if data.sprite_texture:
+		rect.color = Color(0, 0, 0, 0)
+		var ls          := Sprite2D.new()
+		ls.texture       = data.sprite_texture
+		var tex_h        := float(data.sprite_texture.get_height())
+		var target_h     := LIMB_SIZE.y * 3.0
+		ls.scale         = Vector2.ONE * (target_h / tex_h)
+		ls.centered      = true
+		# Centre the sprite on the rect's own centre in rect-local space.
+		ls.position      = Vector2(limb_len * 0.5, LIMB_SIZE.y * 0.5)
+		# Mirror for left-arm sockets so the socket connector stays on the
+		# chassis side and the weapon tip points outward.
+		if outward_dir.x < 0.0:
+			ls.flip_h = true
+		ls.z_index        = 1
+		ls.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+		rect.add_child(ls)
 
 	# Hitbox — tip circle, on layer 4 so limbs can detect each other via area_entered.
 	# collision_mask 5 = layer 1 (bey chassis) | layer 4 (other limb areas).
@@ -194,11 +284,12 @@ func _plug_limb(socket: Marker2D, data: LimbData) -> void:
 		area.area_entered.connect(_on_limb_vs_limb.bind(data.mass, area))
 
 	_limbs.append({
-		"rect":   rect,
-		"socket": socket,
-		"phase":  randf() * TAU,
-		"wobble": data.wobble_intensity,
-		"length": data.length_multiplier,
+		"rect":      rect,
+		"socket":    socket,
+		"phase":     randf() * TAU,
+		"wobble":    data.wobble_intensity,
+		"length":    data.length_multiplier,
+		"has_sprite": data.sprite_texture != null,
 	})
 
 # Hot-swaps the chassis and both limbs on an already-initialised Ghoul.
@@ -216,8 +307,28 @@ func apply_loadout(new_chassis: ChassisData, new_limb_l: LimbData, new_limb_r: L
 	limb_left  = new_limb_l
 	limb_right = new_limb_r
 
-	if _base_sprite:
-		_base_sprite.color = chassis.color
+	# Remove the previous chassis sprite (if any) before potentially adding a new one.
+	if is_instance_valid(_chassis_sprite):
+		_chassis_sprite.queue_free()
+	_chassis_sprite = null
+
+	if chassis.sprite_texture:
+		# Hide placeholders and add sprite — same logic as _ready().
+		if _base_sprite:
+			_base_sprite.color = Color(0, 0, 0, 0)
+		var torso: ColorRect = get_node_or_null("Torso_Sprite")
+		if torso:
+			torso.color = Color(0, 0, 0, 0)
+		var cs            := Sprite2D.new()
+		cs.texture         = chassis.sprite_texture
+		cs.scale           = Vector2.ONE * (108.0 / float(chassis.sprite_texture.get_width()))
+		cs.z_index         = 2
+		cs.texture_filter  = CanvasItem.TEXTURE_FILTER_LINEAR
+		add_child(cs)
+		_chassis_sprite = cs
+	else:
+		# No sprite — rebuild concentric ring colours.
+		_build_chassis_rings()
 
 	_plug_limb(socket_left_arm,  limb_left)
 	_plug_limb(socket_right_arm, limb_right)
@@ -233,14 +344,20 @@ func set_team_color(color: Color) -> void:
 	_tint_to_team()
 
 func _tint_to_team() -> void:
-	if _base_sprite:
-		_base_sprite.color = team_color.darkened(0.2)
+	if _chassis_sprite == null:
+		if _base_sprite:
+			_base_sprite.color  = team_color.darkened(0.65)   # outer dark ring
+		if _torso_sprite:
+			_torso_sprite.color = team_color                   # main body
+		if is_instance_valid(_chassis_core):
+			_chassis_core.color = team_color.lightened(0.50)  # bright centre
 	var shades: Array[Color] = [
 		team_color,
 		team_color.lightened(0.3),
 	]
 	for i in _limbs.size():
-		(_limbs[i]["rect"] as ColorRect).color = shades[i % shades.size()]
+		if not _limbs[i]["has_sprite"]:
+			(_limbs[i]["rect"] as ColorRect).color = shades[i % shades.size()]
 
 # -----------------------------------------------------------------------------
 func _process(delta: float) -> void:
@@ -280,10 +397,16 @@ func _process(delta: float) -> void:
 		_victory_pulse_t += delta
 		var pulse := (sin(_victory_pulse_t * 5.0) * 0.5 + 0.5)
 		var gold_color := Color(1.0, 0.85, 0.0, 1.0).lerp(Color.WHITE, pulse * 0.35)
-		if _base_sprite:
-			_base_sprite.color = gold_color
+		if _chassis_sprite == null:
+			if _base_sprite:
+				_base_sprite.color  = gold_color.darkened(0.35)
+			if _torso_sprite:
+				_torso_sprite.color = gold_color
+			if is_instance_valid(_chassis_core):
+				_chassis_core.color = gold_color.lightened(0.35)
 		for entry in _limbs:
-			(entry["rect"] as ColorRect).color = gold_color
+			if not entry["has_sprite"]:
+				(entry["rect"] as ColorRect).color = gold_color
 		self.position = Vector2.ZERO
 		self.scale    = Vector2.ONE
 		if _base_sprite:
@@ -469,13 +592,25 @@ func _on_limb_hit(body: Node2D, limb_mass: float, area: Area2D, total_reach: flo
 		var defender_power: float = enemy_dmg_mass * abs(enemy.angular_velocity) * 75.0
 		var is_dominant:    bool  = attacker_power > defender_power * DOM_POWER_RATIO
 
+		# ── Combo counter ─────────────────────────────────────────────────────
+		# Increment attacker's streak, then read the resulting multiplier.
+		# Reset the enemy's streak because they're absorbing a clean chassis hit.
+		# All three operations are gated on method existence so this survives
+		# against non-SpinController bodies without crashing.
+		if _spin_body.has_method("increment_combo"):
+			_spin_body.increment_combo()
+		var combo_mult: float = (_spin_body.get_combo_multiplier()
+			if _spin_body.has_method("get_combo_multiplier") else 1.0)
+		if enemy.has_method("reset_combo"):
+			enemy.reset_combo()
+
 		if is_dominant:
 			# Full velocity zero — maximum snap readability.
 			enemy.linear_velocity = Vector2.ZERO
 			# Wall magnetism: blend launch_dir outward from arena center so hits reach the wall.
 			var wall_dir: Vector2 = (enemy.global_position - Vector2(576.0, 324.0)).normalized()
 			launch_dir = (launch_dir + wall_dir * 0.5).normalized()
-			_enemy_impulse(enemy, launch_dir * DOM_IMPULSE)
+			_enemy_impulse(enemy, launch_dir * DOM_IMPULSE * combo_mult)
 			# Attacker refunds 10% RPM, suffers zero knockback.
 			var max_av: float = (_spin_body.max_angular_velocity
 				if "max_angular_velocity" in _spin_body else 150.0)
@@ -495,7 +630,7 @@ func _on_limb_hit(body: Node2D, limb_mass: float, area: Area2D, total_reach: flo
 			enemy.linear_velocity *= 0.2
 			var crit_bonus: float   = area.get_meta("crit_impulse_bonus", 0.0)
 			var crit_impulse: float = maxf(CRIT_HIT_IMPULSE, enemy.mass * 180.0) * (1.0 + crit_bonus)
-			_enemy_impulse(enemy, launch_dir * crit_impulse)
+			_enemy_impulse(enemy, launch_dir * crit_impulse * combo_mult)
 			_spin_body.apply_central_impulse(-launch_dir * CRIT_SELF_IMPULSE)
 			# Mass snap for heavy attackers.
 			if _spin_body.mass > enemy.mass * SNAP_MASS_RATIO:
@@ -513,7 +648,7 @@ func _on_limb_hit(body: Node2D, limb_mass: float, area: Area2D, total_reach: flo
 		if not is_dominant and limb_mass < SMALL_LIMB_THRESHOLD:
 			var bypass_impulse: float = CRIT_HIT_IMPULSE \
 				* (enemy.mass / MASS_BYPASS_REFERENCE) * MASS_BYPASS_FACTOR
-			_enemy_impulse(enemy, launch_dir * bypass_impulse)
+			_enemy_impulse(enemy, launch_dir * bypass_impulse * combo_mult)
 
 		# Shared FX for all unblocked hits.
 		var tip_offset: Vector2 = area.global_position - _spin_body.global_position
@@ -746,22 +881,31 @@ func start_ghost_trail() -> void:
 		)
 
 # Flashes all attacker visuals pure white for 0.1s, then restores original colours.
+# Sprite-based visuals are skipped for color changes — their ColorRect placeholders
+# are transparent and must stay that way, so the flash is simply omitted for them.
 func _flash_attacker() -> void:
-	if _base_sprite:
+	if _chassis_sprite == null and _base_sprite:
 		_base_sprite.color = Color.WHITE
 	for entry in _limbs:
-		(entry["rect"] as ColorRect).color = Color.WHITE
+		if not entry["has_sprite"]:
+			(entry["rect"] as ColorRect).color = Color.WHITE
 	get_tree().create_timer(0.1, true, false, true).timeout.connect(func() -> void:
 		if not is_instance_valid(self):
 			return
 		if team_color.a > 0.0:
 			_tint_to_team()
 		else:
-			if _base_sprite and chassis:
-				_base_sprite.color = chassis.color
+			if _chassis_sprite == null:
+				if _base_sprite and chassis:
+					_base_sprite.color  = chassis.color.darkened(0.65)
+				if _torso_sprite and chassis:
+					_torso_sprite.color = chassis.color
+				if is_instance_valid(_chassis_core) and chassis:
+					_chassis_core.color = chassis.color.lightened(0.55)
 			var limb_data := [limb_left, limb_right]
 			for i in _limbs.size():
-				(_limbs[i]["rect"] as ColorRect).color = (limb_data[i] as LimbData).color
+				if not _limbs[i]["has_sprite"]:
+					(_limbs[i]["rect"] as ColorRect).color = (limb_data[i] as LimbData).color
 	)
 
 

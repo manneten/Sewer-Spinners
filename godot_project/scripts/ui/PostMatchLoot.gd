@@ -5,10 +5,16 @@ extends CanvasLayer
 # and can swap it onto their rig (left or right arm) or leave it.
 
 const SHADER_PATH: String = "res://assets/shaders/label_jitter.gdshader"
+const _FONT: Font         = preload("res://assets/fonts/Demon Panic.otf")
 
-const INK:       Color = Color(0.88, 0.84, 0.72, 0.95)   # warm cream — readable on dark panels
-const INK_FAINT: Color = Color(0.65, 0.62, 0.52, 0.82)   # dimmer cream
-const SEWER_GREEN: Color = Color(0.059, 0.30, 0.08, 0.70)
+# ── Sewer-Chic palette ────────────────────────────────────────────────────────
+const INK:         Color = Color(0.18, 0.12, 0.05, 1.00)
+const INK_FAINT:   Color = Color(0.40, 0.30, 0.16, 0.85)
+const SEWER_GREEN: Color = Color(0.35, 0.55, 0.18, 0.80)
+const C_BG:        Color = Color(0.88, 0.82, 0.70, 0.97)
+const C_PANEL:     Color = Color(0.80, 0.72, 0.58, 0.92)
+const C_PANEL_ALT: Color = Color(0.78, 0.70, 0.56, 0.92)
+const C_SLOT:      Color = Color(0.72, 0.64, 0.50, 0.88)
 
 const SKIP_QUIPS: Array[String] = [
 	"Too slimy for my taste.",
@@ -38,10 +44,9 @@ var _swap_lbl_r:      Label    = null
 var _skip_quip_lbl:   Label    = null
 var _shake_tween_l:   Tween    = null
 var _shake_tween_r:   Tween    = null
-var _own_particles:   Array    = []   # CPUParticles2D added to root; cleaned up on exit.
+var _own_particles:   Array    = []
 
 
-# ── Entry ──────────────────────────────────────────────────────────────────────
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	layer = 25
@@ -50,7 +55,6 @@ func _ready() -> void:
 	_build_ui()
 
 
-# ── Loot pick ──────────────────────────────────────────────────────────────────
 func _pick_loot() -> LimbData:
 	var pool: Array = RunManager.load_all_of_class("LimbData")
 	var filtered: Array = []
@@ -64,7 +68,6 @@ func _pick_loot() -> LimbData:
 	return filtered[0] as LimbData
 
 
-# ── Shader helper ──────────────────────────────────────────────────────────────
 func _jitter(strength: float = 1.5, speed: float = 9.0) -> ShaderMaterial:
 	var mat := ShaderMaterial.new()
 	if ResourceLoader.exists(SHADER_PATH):
@@ -74,18 +77,15 @@ func _jitter(strength: float = 1.5, speed: float = 9.0) -> ShaderMaterial:
 	return mat
 
 
-# ── Main UI build ──────────────────────────────────────────────────────────────
 func _build_ui() -> void:
 	var vp: Vector2 = get_tree().root.get_visible_rect().size
 
-	# ── Sewer-floor background ─────────────────────────────────────────────────
 	var bg := ColorRect.new()
-	bg.color = Color(0.055, 0.10, 0.055, 0.97)
+	bg.color = C_BG
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(bg)
 
-	# Subtle grime drips across the upper half — ambient atmosphere.
 	for i in 6:
 		_spawn_grime_drip(Vector2(randf_range(60.0, vp.x - 60.0),
 			randf_range(10.0, vp.y * 0.45)))
@@ -97,25 +97,26 @@ func _build_ui() -> void:
 
 	# ── Top banner ─────────────────────────────────────────────────────────────
 	var banner := ColorRect.new()
-	banner.color = Color(0.07, 0.14, 0.07, 1.0)
+	banner.color = Color(0.74, 0.66, 0.52, 1.0)
 	banner.set_anchors_preset(Control.PRESET_TOP_WIDE)
-	banner.offset_bottom = 68.0
+	banner.offset_bottom = 76.0
 	banner.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(banner)
 
 	var banner_line := ColorRect.new()
 	banner_line.color = SEWER_GREEN
 	banner_line.set_anchors_preset(Control.PRESET_TOP_WIDE)
-	banner_line.offset_top    = 66.0
-	banner_line.offset_bottom = 69.0
+	banner_line.offset_top    = 74.0
+	banner_line.offset_bottom = 77.0
 	banner_line.mouse_filter  = Control.MOUSE_FILTER_IGNORE
 	root.add_child(banner_line)
 
 	var win_lbl := Label.new()
 	win_lbl.text     = "ROUND WON"
-	win_lbl.position = Vector2(22, 10)
-	win_lbl.add_theme_font_size_override("font_size", 53)
-	win_lbl.add_theme_color_override("font_color", Color(0.15, 0.82, 0.28, 1.0))
+	win_lbl.position = Vector2(22, 6)
+	win_lbl.add_theme_font_override("font", _FONT)
+	win_lbl.add_theme_font_size_override("font_size", 66)
+	win_lbl.add_theme_color_override("font_color", Color(0.08, 0.68, 0.22, 1.0))
 	win_lbl.material = _jitter(1.3, 9.0)
 	root.add_child(win_lbl)
 
@@ -125,16 +126,17 @@ func _build_ui() -> void:
 		RunManager.current_losses, RunManager.LOSSES_TO_FAIL,
 	]
 	state_lbl.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	state_lbl.offset_left   = -380.0
-	state_lbl.offset_bottom =  68.0
+	state_lbl.offset_left   = -440.0
+	state_lbl.offset_bottom =  76.0
 	state_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	state_lbl.add_theme_font_size_override("font_size", 22)
-	state_lbl.add_theme_color_override("font_color", Color(0.42, 0.55, 0.40, 0.82))
+	state_lbl.add_theme_font_override("font", _FONT)
+	state_lbl.add_theme_font_size_override("font_size", 29)
+	state_lbl.add_theme_color_override("font_color", INK_FAINT)
 	root.add_child(state_lbl)
 
 	# ── Content area ───────────────────────────────────────────────────────────
-	var top:    float = 76.0
-	var bot:    float = vp.y - 90.0
+	var top:    float = 84.0
+	var bot:    float = vp.y - 100.0
 	var left_w: float = vp.x * 0.44
 	var pad:    float = 12.0
 
@@ -150,8 +152,8 @@ func _build_ui() -> void:
 	var skip_line := ColorRect.new()
 	skip_line.color = SEWER_GREEN
 	skip_line.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	skip_line.offset_top    = -90.0
-	skip_line.offset_bottom = -87.0
+	skip_line.offset_top    = -100.0
+	skip_line.offset_bottom = -97.0
 	skip_line.mouse_filter  = Control.MOUSE_FILTER_IGNORE
 	root.add_child(skip_line)
 
@@ -159,17 +161,21 @@ func _build_ui() -> void:
 	skip_btn.text = "▷   LEAVE IT IN THE GUTTER"
 	skip_btn.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	skip_btn.offset_left   =  18.0
-	skip_btn.offset_right  = 420.0
-	skip_btn.offset_top    = -82.0
-	skip_btn.offset_bottom = -46.0
-	skip_btn.add_theme_font_size_override("font_size", 27)
-	skip_btn.add_theme_color_override("font_color", Color(0.52, 0.50, 0.43, 0.88))
+	skip_btn.offset_right  = 480.0
+	skip_btn.offset_top    = -92.0
+	skip_btn.offset_bottom = -50.0
+	skip_btn.add_theme_font_override("font", _FONT)
+	skip_btn.add_theme_font_size_override("font_size", 33)
+	skip_btn.add_theme_color_override("font_color", INK_FAINT)
 	var skip_style := StyleBoxFlat.new()
-	skip_style.bg_color = Color(0.03, 0.05, 0.02, 0.0)
+	skip_style.bg_color = Color(0.80, 0.72, 0.58, 0.0)
 	skip_btn.add_theme_stylebox_override("normal", skip_style)
 	skip_btn.add_theme_stylebox_override("focus",  skip_style)
 	var skip_hover := StyleBoxFlat.new()
-	skip_hover.bg_color = Color(0.06, 0.10, 0.05, 0.6)
+	skip_hover.bg_color     = Color(0.74, 0.66, 0.52, 0.80)
+	skip_hover.border_color = Color(0.55, 0.38, 0.18, 0.60)
+	skip_hover.border_width_top = 1; skip_hover.border_width_bottom = 1
+	skip_hover.border_width_left = 1; skip_hover.border_width_right = 1
 	skip_btn.add_theme_stylebox_override("hover",   skip_hover)
 	skip_btn.add_theme_stylebox_override("pressed", skip_hover)
 	skip_btn.pressed.connect(_on_skip)
@@ -180,43 +186,43 @@ func _build_ui() -> void:
 	_skip_quip_lbl.text = ""
 	_skip_quip_lbl.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	_skip_quip_lbl.offset_left   =  22.0
-	_skip_quip_lbl.offset_right  = 740.0
-	_skip_quip_lbl.offset_top    = -42.0
-	_skip_quip_lbl.offset_bottom = -12.0
-	_skip_quip_lbl.add_theme_font_size_override("font_size", 20)
-	_skip_quip_lbl.add_theme_color_override("font_color", Color(0.38, 0.36, 0.30, 0.68))
+	_skip_quip_lbl.offset_right  = 800.0
+	_skip_quip_lbl.offset_top    = -48.0
+	_skip_quip_lbl.offset_bottom = -10.0
+	_skip_quip_lbl.add_theme_font_override("font", _FONT)
+	_skip_quip_lbl.add_theme_font_size_override("font_size", 24)
+	_skip_quip_lbl.add_theme_color_override("font_color", INK_FAINT)
 	root.add_child(_skip_quip_lbl)
 
 
-# ── Left panel: scavenged limb ─────────────────────────────────────────────────
+# ── Left panel: scavenged limb ────────────────────────────────────────────────
 func _build_loot_panel(root: Control, pos: Vector2, size: Vector2) -> void:
 	var panel := ColorRect.new()
 	panel.position    = pos
 	panel.size        = size
-	panel.color       = Color(0.07, 0.14, 0.07, 0.92)
+	panel.color       = C_PANEL
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(panel)
 
-	# Scratchy border — two thin lines inset slightly.
 	for offset in [0, 2]:
 		var border := ColorRect.new()
 		border.position    = pos + Vector2(offset, offset)
 		border.size        = size - Vector2(offset * 2, offset * 2)
-		border.color       = Color(0.10, 0.40, 0.12, 0.40 - offset * 0.1)
+		border.color       = Color(0.55, 0.38, 0.18, 0.30 - offset * 0.08)
 		border.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		root.add_child(border)
 
-	# Scrawled header.
 	var hdr := Label.new()
 	hdr.text     = "SCAVENGED FROM THE WRECKAGE"
-	hdr.position = pos + Vector2(12, 10)
-	hdr.add_theme_font_size_override("font_size", 18)
-	hdr.add_theme_color_override("font_color", Color(0.32, 0.48, 0.28, 0.75))
+	hdr.position = pos + Vector2(12, 8)
+	hdr.add_theme_font_override("font", _FONT)
+	hdr.add_theme_font_size_override("font_size", 22)
+	hdr.add_theme_color_override("font_color", INK_FAINT)
 	root.add_child(hdr)
 
 	var sep_lbl := Label.new()
 	sep_lbl.text     = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-	sep_lbl.position = pos + Vector2(12, 28)
+	sep_lbl.position = pos + Vector2(12, 32)
 	sep_lbl.add_theme_font_size_override("font_size", 15)
 	sep_lbl.add_theme_color_override("font_color", SEWER_GREEN)
 	root.add_child(sep_lbl)
@@ -224,46 +230,46 @@ func _build_loot_panel(root: Control, pos: Vector2, size: Vector2) -> void:
 	if not _offered_limb:
 		var none_lbl := Label.new()
 		none_lbl.text     = "( the pile is empty )"
-		none_lbl.position = pos + Vector2(14, 70)
+		none_lbl.position = pos + Vector2(14, 72)
+		none_lbl.add_theme_font_override("font", _FONT)
 		none_lbl.add_theme_color_override("font_color", INK_FAINT)
 		root.add_child(none_lbl)
 		return
 
-	# Limb name — big, heavy jitter, ink-bleed.
 	var name_lbl := Label.new()
 	name_lbl.text     = _offered_limb.name.to_upper()
-	name_lbl.position = pos + Vector2(12, 46)
-	name_lbl.size     = Vector2(size.x * 0.58, 46)
-	name_lbl.add_theme_font_size_override("font_size", 42)
+	name_lbl.position = pos + Vector2(12, 50)
+	name_lbl.size     = Vector2(size.x * 0.58, 62)
+	name_lbl.add_theme_font_override("font", _FONT)
+	name_lbl.add_theme_font_size_override("font_size", 55)
 	name_lbl.add_theme_color_override("font_color", INK)
 	name_lbl.material = _jitter(2.2, 12.0)
 	root.add_child(name_lbl)
 
-	# Freshness — always FRESH for newly looted parts.
 	var fresh_lbl := Label.new()
 	fresh_lbl.text     = "▓▓▓  FRESH"
-	fresh_lbl.position = pos + Vector2(12, 94)
-	fresh_lbl.add_theme_font_size_override("font_size", 24)
-	fresh_lbl.add_theme_color_override("font_color", Color(0.20, 0.85, 0.30, 1.0))
+	fresh_lbl.position = pos + Vector2(12, 114)
+	fresh_lbl.add_theme_font_override("font", _FONT)
+	fresh_lbl.add_theme_font_size_override("font_size", 31)
+	fresh_lbl.add_theme_color_override("font_color", Color(0.10, 0.72, 0.22, 1.0))
 	fresh_lbl.material = _jitter(0.9, 7.0)
 	root.add_child(fresh_lbl)
 
-	# Stats in ink.
 	var stats_lbl := Label.new()
 	stats_lbl.text = (
 		"mass:    %.1f kg\n" +
 		"reach:   %.1fx\n"   +
 		"wobble:  %.1f"
 	) % [_offered_limb.mass, _offered_limb.length_multiplier, _offered_limb.wobble_intensity]
-	stats_lbl.position = pos + Vector2(12, 122)
-	stats_lbl.add_theme_font_size_override("font_size", 22)
+	stats_lbl.position = pos + Vector2(12, 150)
+	stats_lbl.add_theme_font_override("font", _FONT)
+	stats_lbl.add_theme_font_size_override("font_size", 29)
 	stats_lbl.add_theme_color_override("font_color", INK)
 	stats_lbl.material = _jitter(0.7, 6.0)
 	root.add_child(stats_lbl)
 
-	# Colour swatch — physical sample of the limb material.
-	var swatch_pos: Vector2  = pos + Vector2(size.x * 0.60, 48)
-	var swatch_size: Vector2 = Vector2(size.x * 0.34, size.y * 0.30)
+	var swatch_pos: Vector2  = pos + Vector2(size.x * 0.60, 52)
+	var swatch_size: Vector2 = Vector2(size.x * 0.34, size.y * 0.28)
 	var swatch := ColorRect.new()
 	swatch.position    = swatch_pos
 	swatch.size        = swatch_size
@@ -274,44 +280,44 @@ func _build_loot_panel(root: Control, pos: Vector2, size: Vector2) -> void:
 	var swatch_lbl := Label.new()
 	swatch_lbl.text     = "MATERIAL\nSAMPLE"
 	swatch_lbl.position = swatch_pos + Vector2(4, swatch_size.y + 6)
-	swatch_lbl.add_theme_font_size_override("font_size", 15)
-	swatch_lbl.add_theme_color_override("font_color", Color(0.32, 0.45, 0.28, 0.60))
+	swatch_lbl.add_theme_font_override("font", _FONT)
+	swatch_lbl.add_theme_font_size_override("font_size", 19)
+	swatch_lbl.add_theme_color_override("font_color", INK_FAINT)
 	root.add_child(swatch_lbl)
 
-	# Sparks — golden, short-burst, looping.
 	_spawn_sparks(swatch_pos + Vector2(swatch_size.x * 0.5, swatch_size.y * 0.3))
-	# Oil drip — dark viscous drops falling from the swatch edge.
 	_spawn_oil_drip(swatch_pos + Vector2(swatch_size.x * 0.65, 0.0))
 
-	# Scrawled call-to-action near the bottom of the panel.
 	var cta_lbl := Label.new()
 	cta_lbl.text     = "KEEP THE MEAT?"
-	cta_lbl.position = pos + Vector2(12, size.y - 48)
-	cta_lbl.add_theme_font_size_override("font_size", 28)
-	cta_lbl.add_theme_color_override("font_color", Color(0.70, 0.65, 0.48, 0.88))
+	cta_lbl.position = pos + Vector2(12, size.y - 58)
+	cta_lbl.add_theme_font_override("font", _FONT)
+	cta_lbl.add_theme_font_size_override("font_size", 37)
+	cta_lbl.add_theme_color_override("font_color", INK)
 	cta_lbl.material = _jitter(2.0, 13.0)
 	root.add_child(cta_lbl)
 
 
-# ── Right panel: current loadout + swap buttons ────────────────────────────────
+# ── Right panel: current loadout + swap buttons ───────────────────────────────
 func _build_loadout_panel(root: Control, pos: Vector2, size: Vector2) -> void:
 	var panel := ColorRect.new()
 	panel.position    = pos
 	panel.size        = size
-	panel.color       = Color(0.065, 0.12, 0.065, 0.92)
+	panel.color       = C_PANEL_ALT
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(panel)
 
 	var hdr := Label.new()
 	hdr.text     = "YOUR CURRENT MEAT"
-	hdr.position = pos + Vector2(12, 10)
-	hdr.add_theme_font_size_override("font_size", 18)
-	hdr.add_theme_color_override("font_color", Color(0.32, 0.48, 0.28, 0.75))
+	hdr.position = pos + Vector2(12, 8)
+	hdr.add_theme_font_override("font", _FONT)
+	hdr.add_theme_font_size_override("font_size", 22)
+	hdr.add_theme_color_override("font_color", INK_FAINT)
 	root.add_child(hdr)
 
 	var sep_lbl := Label.new()
 	sep_lbl.text     = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-	sep_lbl.position = pos + Vector2(12, 28)
+	sep_lbl.position = pos + Vector2(12, 32)
 	sep_lbl.add_theme_font_size_override("font_size", 15)
 	sep_lbl.add_theme_color_override("font_color", SEWER_GREEN)
 	root.add_child(sep_lbl)
@@ -324,7 +330,7 @@ func _build_loadout_panel(root: Control, pos: Vector2, size: Vector2) -> void:
 
 	_swap_lbl_l = _build_swap_slot(
 		root,
-		pos + Vector2(12.0, 48.0),
+		pos + Vector2(12.0, 56.0),
 		Vector2(slot_w, slot_h),
 		limb_l, 0,
 		"▶  SWAP LEFT ARM",
@@ -332,20 +338,20 @@ func _build_loadout_panel(root: Control, pos: Vector2, size: Vector2) -> void:
 	)
 	_swap_lbl_r = _build_swap_slot(
 		root,
-		pos + Vector2(slot_w + 24.0, 48.0),
+		pos + Vector2(slot_w + 24.0, 56.0),
 		Vector2(slot_w, slot_h),
 		limb_r, 1,
 		"▶  SWAP RIGHT ARM",
 		Color(0.18, 0.48, 0.92, 1.0)
 	)
 
-	# "SCRAP THIS?" prompt above the buttons, scrawled.
 	var scrap_lbl := Label.new()
 	scrap_lbl.text = "SCRAP THIS?"
 	scrap_lbl.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	scrap_lbl.position = pos + Vector2(size.x - 190.0, size.y - 42.0)
-	scrap_lbl.add_theme_font_size_override("font_size", 25)
-	scrap_lbl.add_theme_color_override("font_color", Color(0.68, 0.62, 0.44, 0.72))
+	scrap_lbl.position = pos + Vector2(size.x - 220.0, size.y - 48.0)
+	scrap_lbl.add_theme_font_override("font", _FONT)
+	scrap_lbl.add_theme_font_size_override("font_size", 31)
+	scrap_lbl.add_theme_color_override("font_color", INK_FAINT)
 	scrap_lbl.material = _jitter(1.8, 11.0)
 	root.add_child(scrap_lbl)
 
@@ -357,7 +363,7 @@ func _build_swap_slot(root: Control, pos: Vector2, size: Vector2,
 	var slot_bg := ColorRect.new()
 	slot_bg.position    = pos
 	slot_bg.size        = size
-	slot_bg.color       = Color(0.09, 0.17, 0.08, 0.88)
+	slot_bg.color       = C_SLOT
 	slot_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(slot_bg)
 
@@ -365,73 +371,111 @@ func _build_swap_slot(root: Control, pos: Vector2, size: Vector2,
 	var freshness: String = _freshness_text(limb_idx)
 	var frs_col:   Color  = RunManager.get_freshness_color(limb_idx)
 
-	# Limb name — shakes on hover (stored so we can animate it).
 	var name_lbl := Label.new()
 	name_lbl.text     = limb_name
 	name_lbl.position = pos + Vector2(8.0, 8.0)
-	name_lbl.size     = Vector2(size.x - 16.0, 34.0)
-	name_lbl.add_theme_font_size_override("font_size", 27)
+	name_lbl.size     = Vector2(size.x - 16.0, 44.0)
+	name_lbl.add_theme_font_override("font", _FONT)
+	name_lbl.add_theme_font_size_override("font_size", 35)
 	name_lbl.add_theme_color_override("font_color", INK)
 	name_lbl.material = _jitter(0.9, 7.0)
 	root.add_child(name_lbl)
 
-	# Freshness state.
 	var fresh_lbl := Label.new()
 	fresh_lbl.text     = freshness
-	fresh_lbl.position = pos + Vector2(8.0, 44.0)
-	fresh_lbl.add_theme_font_size_override("font_size", 20)
+	fresh_lbl.position = pos + Vector2(8.0, 54.0)
+	fresh_lbl.add_theme_font_override("font", _FONT)
+	fresh_lbl.add_theme_font_size_override("font_size", 26)
 	fresh_lbl.add_theme_color_override("font_color", frs_col)
 	fresh_lbl.material = _jitter(0.6, 6.0)
 	root.add_child(fresh_lbl)
 
-	# Compact stats.
 	if limb:
 		var stats_lbl := Label.new()
 		stats_lbl.text     = "%.1fkg  ·  %.1fx  ·  w%.1f" % [
 			limb.mass, limb.length_multiplier, limb.wobble_intensity
 		]
-		stats_lbl.position = pos + Vector2(8.0, 66.0)
-		stats_lbl.add_theme_font_size_override("font_size", 18)
+		stats_lbl.position = pos + Vector2(8.0, 84.0)
+		stats_lbl.add_theme_font_override("font", _FONT)
+		stats_lbl.add_theme_font_size_override("font_size", 22)
 		stats_lbl.add_theme_color_override("font_color", INK_FAINT)
 		root.add_child(stats_lbl)
 
-	# Colour strip.
 	var strip := ColorRect.new()
-	strip.color        = limb.color if limb else Color(0.15, 0.10, 0.08, 1.0)
-	strip.position     = pos + Vector2(8.0, 86.0)
+	strip.color        = limb.color if limb else Color(0.45, 0.38, 0.28, 1.0)
+	strip.position     = pos + Vector2(8.0, 110.0)
 	strip.size         = Vector2(size.x - 16.0, 10.0)
 	strip.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(strip)
 
-	# Durability pip row: filled squares = remaining fights.
 	var dur: int = RunManager.player_limb_durabilities[limb_idx] \
 		if limb_idx < RunManager.player_limb_durabilities.size() else RunManager.LIMB_MAX_DURABILITY
 	for pip_i in RunManager.LIMB_MAX_DURABILITY:
 		var pip := ColorRect.new()
-		pip.size        = Vector2(14.0, 10.0)
-		pip.position    = pos + Vector2(8.0 + pip_i * 18.0, 100.0)
-		pip.color       = frs_col if pip_i < dur else Color(0.12, 0.12, 0.10, 0.6)
+		pip.size        = Vector2(16.0, 12.0)
+		pip.position    = pos + Vector2(8.0 + pip_i * 20.0, 124.0)
+		pip.color       = frs_col if pip_i < dur else Color(0.55, 0.48, 0.38, 0.50)
 		pip.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		root.add_child(pip)
+
+	# ── Comparison deltas vs the offered limb ─────────────────────────────────
+	if limb and _offered_limb:
+		var cy: float = pos.y + 144.0
+
+		var delta_hdr := Label.new()
+		delta_hdr.text     = "IF SWAPPED:"
+		delta_hdr.position = Vector2(pos.x + 8.0, cy)
+		delta_hdr.add_theme_font_override("font", _FONT)
+		delta_hdr.add_theme_font_size_override("font_size", 18)
+		delta_hdr.add_theme_color_override("font_color", INK_FAINT)
+		root.add_child(delta_hdr)
+		cy += 22.0
+
+		var deltas: Array = [
+			["mass",   _offered_limb.mass               - limb.mass,               "%.1f kg"],
+			["reach",  _offered_limb.length_multiplier  - limb.length_multiplier,  "%.1fx"  ],
+			["wobble", _offered_limb.wobble_intensity   - limb.wobble_intensity,   "%.1f"   ],
+		]
+		for d in deltas:
+			var delta: float  = d[1] as float
+			var sign:  String = "+" if delta >= 0.0 else ""
+			var dcol:  Color
+			if delta > 0.05:
+				dcol = Color(0.10, 0.62, 0.22, 1.0)
+			elif delta < -0.05:
+				dcol = Color(0.78, 0.16, 0.10, 1.0)
+			else:
+				dcol = INK_FAINT
+
+			var fmt: String = d[2] as String
+			var dl := Label.new()
+			dl.text     = "%s  %s%s" % [d[0], sign, (fmt % delta)]
+			dl.position = Vector2(pos.x + 8.0, cy)
+			dl.add_theme_font_override("font", _FONT)
+			dl.add_theme_font_size_override("font_size", 22)
+			dl.add_theme_color_override("font_color", dcol)
+			root.add_child(dl)
+			cy += 26.0
 
 	# Swap button.
 	var btn := Button.new()
 	btn.text     = btn_text
-	btn.position = pos + Vector2(4.0, size.y - 46.0)
-	btn.size     = Vector2(size.x - 8.0, 40.0)
-	btn.add_theme_font_size_override("font_size", 21)
+	btn.position = pos + Vector2(4.0, size.y - 52.0)
+	btn.size     = Vector2(size.x - 8.0, 46.0)
+	btn.add_theme_font_override("font", _FONT)
+	btn.add_theme_font_size_override("font_size", 26)
 	btn.add_theme_color_override("font_color", btn_color)
 
 	var sn := StyleBoxFlat.new()
-	sn.bg_color          = Color(0.06, 0.10, 0.06, 0.90)
-	sn.border_color      = btn_color.darkened(0.25)
-	sn.border_width_top = 1; sn.border_width_bottom = 1
-	sn.border_width_left = 1; sn.border_width_right  = 1
+	sn.bg_color          = Color(0.80, 0.72, 0.58, 0.92)
+	sn.border_color      = btn_color.darkened(0.15)
+	sn.border_width_top = 2; sn.border_width_bottom = 2
+	sn.border_width_left = 2; sn.border_width_right  = 2
 	var sh := StyleBoxFlat.new()
-	sh.bg_color          = Color(0.10, 0.16, 0.10, 0.95)
+	sh.bg_color          = Color(0.88, 0.82, 0.68, 1.00)
 	sh.border_color      = btn_color
-	sh.border_width_top = 2; sh.border_width_bottom = 2
-	sh.border_width_left = 2; sh.border_width_right  = 2
+	sh.border_width_top = 3; sh.border_width_bottom = 3
+	sh.border_width_left = 3; sh.border_width_right  = 3
 	btn.add_theme_stylebox_override("normal",  sn)
 	btn.add_theme_stylebox_override("focus",   sn)
 	btn.add_theme_stylebox_override("hover",   sh)
@@ -450,7 +494,6 @@ func _build_swap_slot(root: Control, pos: Vector2, size: Vector2,
 	return name_lbl
 
 
-# ── Freshness helpers ──────────────────────────────────────────────────────────
 func _freshness_text(idx: int) -> String:
 	var label: String = RunManager.get_limb_freshness(idx)
 	match label:
@@ -460,12 +503,10 @@ func _freshness_text(idx: int) -> String:
 		_:             return "✕✕✕  FALLING OFF"
 
 
-# ── Hover shake ────────────────────────────────────────────────────────────────
 func _start_shake(is_left: bool) -> void:
 	var lbl: Label = _swap_lbl_l if is_left else _swap_lbl_r
 	if not is_instance_valid(lbl):
 		return
-	# Capture original x once; reuse on repeated hovers.
 	if not lbl.has_meta("orig_x"):
 		lbl.set_meta("orig_x", lbl.position.x)
 	var base_x: float = lbl.get_meta("orig_x") as float
@@ -500,14 +541,12 @@ func _stop_shake(is_left: bool) -> void:
 		lbl.position.x = lbl.get_meta("orig_x") as float
 
 
-# ── Skip quip ──────────────────────────────────────────────────────────────────
 func _on_skip_hover() -> void:
 	if _skip_quip_lbl:
 		_skip_quip_lbl.text = "\"%s\"" % \
 			SKIP_QUIPS[randi() % SKIP_QUIPS.size()]
 
 
-# ── Particle spawners ──────────────────────────────────────────────────────────
 func _spawn_sparks(pos: Vector2) -> void:
 	var p := CPUParticles2D.new()
 	p.z_index              = 200
@@ -564,14 +603,13 @@ func _spawn_grime_drip(pos: Vector2) -> void:
 	p.initial_velocity_max = 10.0
 	p.scale_amount_min     = 2.0
 	p.scale_amount_max     = 3.5
-	p.color                = Color(0.04, 0.08, 0.03, 0.42)
+	p.color                = Color(0.22, 0.16, 0.08, 0.38)
 	get_tree().root.add_child(p)
 	p.global_position = pos
 	p.emitting = true
 	_own_particles.append(p)
 
 
-# ── Actions ────────────────────────────────────────────────────────────────────
 func _on_take_left() -> void:
 	if _offered_limb and RunManager.player_limbs.size() >= 1:
 		RunManager.player_limbs[0]             = _offered_limb

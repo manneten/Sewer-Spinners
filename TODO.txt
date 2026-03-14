@@ -12,8 +12,176 @@ COMBO COUNTER, EVERY COMBO INCREASES KNOCKBACK BY 3%?
 WEATHER EFFECT IDEAS
 MASS IMPORT 5 ABILITY ITEMS, FISHING ROD?
 FIX STALLED OUT FIGHTS (RARE)
+SUPER SPARK PROCCING MANY TIMES IN A ROW!!?!?
+LIMBS BREAKING TOO OFTEN.
+CROCO JAW COMBAT FEELS GOOD, BUT ALSO OP?? INVESTIGATE
+LIMBS ADD TOO MUCH WEIGHT, MAKES BEYBLADES BOUNCE TOO LITTLE, ITS FINE IF THEY ARE LONG THOUGH.
 
 
 Visuals:
 Added Arena floor shadows to assets(still needs to be implemented into the game)
 RATS FURTHER OUT, N MORE RATS
+
+1. Dark outline on every limb — biggest bang for zero effort
+  A ColorRect 4px larger on all sides, show_behind_parent = true as a child of the limb rect. It follows jiggle
+  automatically. Gives every limb a crisp ink border that makes the color read 2× stronger and makes them look
+  intentional rather than placeholder. This is the single change that separates "colored rectangles" from "designed game
+   pieces."
+
+  2. Chassis concentric rings
+  Instead of the flat solid disc, build the chassis visual from 3 stacked rects: a dark outer ring, a mid-tone main body
+   (chassis color), and a small bright inner core. Looks mechanical, communicates mass at a glance — heavy chassis =
+  thick dark ring, light chassis = thin ring with big bright core.
+
+  3. Tip strike marker
+  A small bright square (8×8 or so) at the very end of each limb — white or team-colored. When the bey spins it traces a
+   glowing circle showing exactly where the hitbox is. Connects the art to the physics in a way that feels designed, not
+   accidental.
+
+  4. RPM-reactive limb brightness
+  At high RPM, lerp the limb rect color toward a brighter/lighter version. At low RPM, let it dull. Ties the visual
+  energy directly to the mechanical state. The BeyDropShadow glow already does this for the chassis — this extends the
+  language to the arms.
+
+
+
+LIMBS IDEAS : 
+
+Rat tail 
+
+(Rat trap active ability)
+
+Active – 5s cooldown
+
+Snaps shut like a mousetrap.
+
+Effect:
+
+if enemy limb or chassi enters the zone
+
+clamps that part for 0.6 seconds
+
+rat tail smells it and does a quick dash towards the trapped target
+
+Chaos potential: very funny.
+
+
+Gyro Antenna
+
+Active – 8s cooldown
+
+Locks spin temporarily.
+
+Effect:
+
+angular_damp = 0
+
+for 1.5 second → perfectly stable spin.
+
+
+
+Toilet Plunger
+
+Active – 5s cooldown
+
+Plunger sticks to enemy.
+
+Effect:
+
+beys spin together briefly
+
+then releases, looks like a bey is holding onto the other one then throwing them away
+
+
+BaebyBlade
+
+Active - 7s cooldown
+
+spawn 3 baby beys that shoot outwards in random directions then spin around with a 10 second lifespan
+
+30% size of father bey, including limbs on the baby beys
+
+a critical-hit on the baby beys kills it immediately
+
+
+Anchor Claw
+
+Active – 8s cooldown
+
+A claw shoots out and embeds in the arena floor.
+
+Effect:
+
+the claw and connected rope holds the Beyblade from going too far out, holding it like a bungee rope almost
+
+if enough force is applied the rope can snap however
+
+
+Chain Flail
+
+Active – 5s cooldown
+
+A spiked ball swings on a chain.
+
+Effect:
+
+A chain + ball swings around in a 360 motion
+
+only the ball has a hitbox, so the enemy bey can be inbetween the chain and ball to not get hit.
+
+
+Panic Thruster
+
+Active – 6s cooldown
+
+Random thrust direction, preferably not into the abyss/outside the map
+
+Effect:
+
+unpredictable dash/dodge.
+
+
+Glitch Limb
+
+Passive
+
+Occasionally teleports slightly.
+
+Effect:
+
+random position offset
+
+Tiny but chaotic.
+
+
+Implement these with the following changes if mentioned :
+Rat Tail (Rat Trap) : Implement it in a way you think is best and I will test it and get back to you with the results.
+
+Toilet Plunger : If toilet plunger touches another limb the 2 limbs are "glued" together.
+
+BaeybyBlade limb : Let's pass on this one for now, HOWEVER I want to ask you if you think its possible to do 1v2 and 1v3 battles against 
+
+smaller versions of the enemy Beyblade(random spawn during the 10 win adventure).
+
+Anchor Claw : Make sure the rope is bungee like but also a force snap limit (should be high).
+
+Chan Flail : Active – 5s cooldown
+
+A spiked ball swings on a chain.
+
+Effect:
+
+A chain + ball swings around in a 360 motion
+
+only the ball has a hitbox, so the enemy bey can be inbetween the chain and ball to not get hit.
+
+Panic Thruster : Implement, maybe make it randomly dash towards one of the 4 corner zones or the middle to make the coding more simple?
+
+Glitch Limb : 5s cooldown short random teleport, Implement with the tweak OR make it teleport behind the enemy Beyblade(the middle would act as the "front").
+
+Barnacle Cling : Implement, love this! Maybe make it aim towards enemy Beyblade?
+
+Pogo Leg : Implement.
+
+
+

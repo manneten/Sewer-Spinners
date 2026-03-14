@@ -27,6 +27,9 @@ const COLLISION_DISABLE_TIME: float   =    0.5  # collision disabled at spawn to
 const HIGH_RPM_WOBBLE_MULT:   float   =    5.0  # exponential base for death-wobble scaling at max RPM
 const DEATH_WOBBLE_THRESHOLD: float   =   0.85  # RPM ratio above which centrifugal strain kicks in
 const MAX_RPM_RECOIL_RATIO:   float   =    0.35 # fraction of hit impulse reflected back onto attacker at max RPM
+const COMBO_MAX:              int     =    10    # ceiling for the consecutive-crit streak
+const COMBO_BONUS_PER:        float   =    0.15  # +15 % impulse multiplier per combo tier
+const COMBO_LABEL_OFFSET:     Vector2 = Vector2(0.0, -80.0)  # world-space offset above bey centre
 
 var bey_name:  String     = ""   # set by GambleScreen from brainrot_names.txt
 var is_active: bool       = true
@@ -42,6 +45,10 @@ var _mass_accel_scale: float   = 1.0   # diminishing returns: heavy builds spin 
 var target_rpm: float          = 0.0   # equilibrium RPM; stability modifier calculated against this
 var _match_timer: float        = 0.0   # seconds since match start; used for soft-start window
 var _base_angular_damp: float  = 0.02  # captured after _ready() finishes; drag formula builds on this
+var combo_count:    int        = 0     # consecutive limb-on-chassis crits; resets on being crit'd
+var _combo_pivot:          Node2D        = null  # counter-rotated each frame so the label stays upright
+var _combo_label:          Label         = null
+var _combo_label_settings: LabelSettings = null
 
 func _ready() -> void:
 	gravity_scale         = 0.0
@@ -95,6 +102,9 @@ func _ready() -> void:
 	# RPM-reactive rim arcs — four white curved stripes that brighten with spin.
 	var arcs := preload("res://scripts/effects/BeySpeedArcs.gd").new()
 	add_child(arcs)
+
+	# Combo counter label — floats above the bey, counter-rotated each frame.
+	_build_combo_label()
 
 	# Safety delay: disable collision for the first 0.5 s so spawn-overlap can't fling beys.
 	var cshape := get_node_or_null("CollisionShape2D") as CollisionShape2D
@@ -267,6 +277,66 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	_grind_bodies.erase(body)
+
+# ── Combo counter ─────────────────────────────────────────────────────────────
+
+# Increments the streak by one, capped at COMBO_MAX.
+# Called by LimbManager when one of our limbs lands a clean chassis hit.
+func increment_combo() -> void:
+	combo_count = mini(combo_count + 1, COMBO_MAX)
+
+# Resets the streak to zero.
+# Called by LimbManager on the ENEMY when our limb hits their chassis.
+func reset_combo() -> void:
+	combo_count = 0
+
+# Returns the impulse multiplier for the current streak.
+# 0 hits → 1.00×   1 hit → 1.05×   10 hits → 1.50×
+func get_combo_multiplier() -> float:
+	return 1.0 + combo_count * COMBO_BONUS_PER
+
+# Builds a Node2D pivot (counter-rotated each frame) containing a background rect
+# and a Label showing the current streak as "Nx".
+func _build_combo_label() -> void:
+	_combo_pivot         = Node2D.new()
+	_combo_pivot.z_index = 120
+	_combo_pivot.visible = false
+
+	# Fully transparent background — the outline handles readability against any surface.
+	_combo_label                      = Label.new()
+	_combo_label.size                 = Vector2(80.0, 42.0)
+	_combo_label.position             = Vector2(-40.0, -21.0)
+	_combo_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_combo_label.vertical_alignment   = VERTICAL_ALIGNMENT_CENTER
+
+	_combo_label_settings              = LabelSettings.new()
+	_combo_label_settings.font         = load("res://assets/fonts/Demon Panic.otf")
+	_combo_label_settings.font_size    = 32
+	_combo_label_settings.font_color   = Color(1.0, 0.50, 0.06, 1.0)  # bright rust orange
+	_combo_label_settings.outline_size  = 4
+	_combo_label_settings.outline_color = Color(0.06, 0.03, 0.01, 1.0)  # near-black
+	_combo_label.label_settings = _combo_label_settings
+
+	_combo_pivot.add_child(_combo_label)
+	add_child.call_deferred(_combo_pivot)
+
+# Keeps the combo label pinned above the bey in world-space and upright.
+func _process(_delta: float) -> void:
+	if not is_instance_valid(_combo_pivot) or not _combo_pivot.is_inside_tree():
+		return
+	# Pin to world position so the label doesn't orbit as the RigidBody2D rotates.
+	_combo_pivot.global_position = global_position + COMBO_LABEL_OFFSET
+	_combo_pivot.global_rotation = 0.0
+
+	var show: bool = (combo_count > 0 and is_active)
+	_combo_pivot.visible = show
+	if show and _combo_label:
+		_combo_label.text = "%dx" % combo_count
+		# Colour shifts from bright rust toward deep red as the streak climbs.
+		if _combo_label_settings:
+			var heat: float = clampf(float(combo_count) / float(COMBO_MAX), 0.0, 1.0)
+			_combo_label_settings.font_color = \
+				Color(1.0, 0.55, 0.08, 1.0).lerp(Color(1.0, 0.18, 0.03, 1.0), heat)
 
 # stability_modifier: at full RPM = 1.0 (normal knockback); at 0 RPM = 2.0 (double knockback).
 # Clamped to [1.0, 3.0] as a safety cap.

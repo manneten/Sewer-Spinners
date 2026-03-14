@@ -18,7 +18,8 @@
       "Bash(for f in \"C:\\\\Users\\\\Manne\\\\documents\\\\sewer_slots\\\\godot_project\\\\resources\\\\parts\"/*.tres)",
       "Bash(do echo \"=== $f ===\")",
       "Read(//c/Users/Manne/documents/sewer_slots/**)",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(grep -r \"ResourceLoader\" \"C:\\\\Users\\\\Manne\\\\documents\\\\sewer_slots\\\\godot_project\\\\scripts\" --include=\"*.gd\" 2>/dev/null | head -50)"
     ]
   }
 }

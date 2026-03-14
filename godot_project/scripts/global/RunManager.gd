@@ -13,6 +13,30 @@ const LIMB_MAX_DURABILITY: int  = 3
 const PARTS_DIR:         String = "res://resources/parts/"
 const BROKEN_NUB_PATH:   String = "res://resources/parts/limb_broken_nub.tres"
 
+# Explicit manifest of all part files — used instead of DirAccess so web exports work.
+# DirAccess cannot traverse the virtual PCK filesystem in a browser.
+const ALL_PARTS: Array[String] = [
+	"res://resources/parts/chassis_bottle_cap.tres",
+	"res://resources/parts/chassis_cast_iron_lid.tres",
+	"res://resources/parts/chassis_croco_jaw.tres",
+	"res://resources/parts/chassis_grease_trap.tres",
+	"res://resources/parts/chassis_plastic_lid.tres",
+	"res://resources/parts/chassis_rusty_manhole.tres",
+	"res://resources/parts/chassis_sewer_king.tres",
+	"res://resources/parts/chassis_worm_queen.tres",
+	"res://resources/parts/limb_croco_tail.tres",
+	"res://resources/parts/limb_ethereal_vapor.tres",
+	"res://resources/parts/limb_fleshy_tongue.tres",
+	"res://resources/parts/limb_lead_pipe.tres",
+	"res://resources/parts/limb_rat_fang.tres",
+	"res://resources/parts/limb_rusty_saw.tres",
+	"res://resources/parts/limb_sewer_bone.tres",
+	"res://resources/parts/limb_sewer_harpoon.tres",
+	"res://resources/parts/limb_sewer_slapper.tres",
+	"res://resources/parts/limb_sludge_sponge.tres",
+	"res://resources/parts/limb_twisted_wrench.tres",
+]
+
 # ── Run state ─────────────────────────────────────────────────────────────────
 var current_wins:   int      = 0
 var current_losses: int      = 0
@@ -146,27 +170,16 @@ func get_freshness_color(index: int) -> Color:
 
 # ── Resource helpers ───────────────────────────────────────────────────────────
 
-# Scans PARTS_DIR for .tres files and returns those whose script class matches
-# class_name_filter (e.g. "ChassisData" or "LimbData").
+# Returns all part resources whose script class matches class_name_filter.
+# Uses a hardcoded manifest instead of DirAccess — DirAccess cannot traverse
+# the virtual PCK filesystem in web exports.
 func load_all_of_class(class_name_filter: String) -> Array:
 	var result := []
-	var dir := DirAccess.open(PARTS_DIR)
-	if not dir:
-		return result
-	dir.list_dir_begin()
-	var fname := dir.get_next()
-	while fname != "":
-		if fname.ends_with(".tres"):
-			var full_path: String = PARTS_DIR + fname
-			# Broken Nub is never available through normal randomisation —
-			# it is only assigned programmatically when a limb breaks.
-			if full_path == BROKEN_NUB_PATH:
-				fname = dir.get_next()
-				continue
-			var res := load(full_path)
-			if res and res.get_script() \
-					and res.get_script().get_global_name() == class_name_filter:
-				result.append(res)
-		fname = dir.get_next()
-	dir.list_dir_end()
+	for full_path: String in ALL_PARTS:
+		if full_path == BROKEN_NUB_PATH:
+			continue
+		var res := load(full_path)
+		if res and res.get_script() \
+				and res.get_script().get_global_name() == class_name_filter:
+			result.append(res)
 	return result

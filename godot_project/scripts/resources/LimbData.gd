@@ -1,6 +1,7 @@
 extends PartData
 class_name LimbData
 
+@export var sprite_texture:      Texture2D = null        # top-down art; null = fallback ColorRect
 @export var wobble_intensity:    float = 1.0
 @export var length_multiplier:   float = 1.0
 @export var slow_on_hit:         bool        = false  # Sludge Sponge: slows enemy on contact (physics impl pending)

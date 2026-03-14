@@ -31,7 +31,7 @@ const JIGGLE_PERIOD_SETTLED := 2.0   # slower, calmer
 const BOSS_NAMES  := ["Sewer King", "Worm Queen"]
 const FRAME_BASE  := "res://assets/ui/drafting_menu/"
 const SHADER_PATH := "res://assets/shaders/label_jitter.gdshader"
-const FONT_PATH   := "res://assets/fonts/InkPen.otf"
+const FONT_PATH   := "res://assets/fonts/Demon Panic.otf"
 
 # ── Paper label layout (sprite-local coords, 1920×1080 space) ────────────────
 # Sprite center = (0,0). Adjust these until the text sits on the papers.

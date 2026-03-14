@@ -1,0 +1,31 @@
+1. The "Organ Market" (Beyond Raw Stats)
+Instead of just pulling a random limb, the player should feel like they are "shopping" in a back-alley black market.
+
+The "Freshness" Mechanic: Parts have a "Freshness" (Durability) rating. A Fresh Necrotic Claw (Legendary) has 100% stats. After 5 battles, it starts to rot, its stats drop, and it eventually falls off mid-fight.
+
+The Motivation: This forces the player to keep pulling from the Gatcha to "refresh" their champion. They aren't just betting; they are Maintenencing a Monster.
+
+2. "The Sewer King's Favor" (The Metagame)
+The player shouldn't just win "Scrap." They should win reputation.
+
+Factions: Introduce 3 "Sewer Bosses" (e.g., The Rat King, The Pipe Widow, The Sludge Baron).
+
+Specific Bets: If you bet on a Beyblade that uses "Rat King" parts and it wins, you gain favor with him.
+
+The Hook: Higher favor unlocks exclusive Gatcha Crates (e.g., "The Baron's Toxic Cache") which have specialized parts you can't get anywhere else.
+
+3. "Splicing" (The Gatcha Twist)
+Standard Gatcha is: Pay Currency -> Get Item. Let’s make it weirder.
+
+The Mutation Station: Let the player pay a small fee to Splice two limbs they already own.
+
+The Result: A "Lead Pipe" + a "Fleshy Tongue" = a "Slapping Iron" (High range + High impact).
+
+The Hook: This turns the Gatcha from a slot machine into a Crafting Game. Users will play matches just to get "fodder" parts to try and mutate a "God-Tier" limb.
+
+4. The "Underground Stream" (Social/AI Element)
+Since you are betting on AI-controlled fights, lean into the "Spectator" aspect.
+
+The "Cursed" Bet: Occasionally, a "Cursed Beyblade" appears in the menu (glitched name, shaking UI). It has 1% win odds but a 100x payout.
+
+The Thrill: It creates "Diamond Hands" moments where the player gambles everything on a total underdog. If they win, they get enough Scrap to buy the "Golden Manhole" chassis.
